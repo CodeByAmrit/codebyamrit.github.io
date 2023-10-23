@@ -8,13 +8,42 @@ a{
 body{
     width: 100vw;
     height: 100vh;
-    background-color: #121213;
+    background-clip: url
+    ;
+    background-color: #141313;
     overflow: hidden;
     padding: 0;
     margin: 0;
     color: white;
     
 }
+.fade{
+    width: 100vw;
+    height: 100vh;
+    background-color:rgba(0, 0, 0, 0.683);
+   
+    position: fixed;
+    top: 0;
+    z-index: -1;
+}
+#background-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -2;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg);
+  }
 .wrap{
     display: flex;
 
@@ -107,7 +136,8 @@ body{
     line-height: normal;
 }
 .cont1 span{
-    background: linear-gradient(180deg, #C700A7 16.84%, #6833FF 100%);
+    background: linear-gradient(180deg, #ff00d4 16.84%, #7a4aff 100%);
+    
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -174,8 +204,10 @@ body{
     height: 90vh;
     /* width: 655px;
     height: 660px; */
+    display: flex;
+    justify-content: center;
     
 }
 .menuRight img{
-    width: 100%;
-}
+    height: 120%;
+ }
