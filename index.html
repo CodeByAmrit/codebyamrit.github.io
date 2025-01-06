@@ -2,9 +2,55 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home - Amrit</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Amrit Sharma - Full Stack Developer, creator of CodeByAmrit. Check out my portfolio, GitHub projects, and more! Follow me on Instagram @warrior_amrit." />
+    <meta name="keywords"
+        content="Amrit, CodeByAmrit, Full Stack Developer, GitHub, codebyamrit.co.in, warrior_amrit, Amrit portfolio" />
+    <meta name="author" content="Amrit Sharma" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Amrit Sharma - Full Stack Developer | CodeByAmrit" />
+    <meta property="og:description"
+        content="Explore my portfolio, GitHub projects, and contact me for web development. Follow me on Instagram @warrior_amrit." />
+    <meta property="og:url" content="https://codebyamrit.co.in" />
+    <meta property="og:image" content="https://codebyamrit.co.in/images/logoMain.png" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Amrit Sharma - Full Stack Developer" />
+    <meta name="twitter:description"
+        content="Check out my portfolio, GitHub projects, and follow me on Instagram @warrior_amrit." />
+    <meta name="twitter:image" content="https://codebyamrit.co.in/images/logoMain.png" />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Amrit Sharma",
+      "url": "https://codebyamrit.co.in",
+      "sameAs": [
+        "https://github.com/codebyamrit",
+        "https://www.instagram.com/warrior_amrit"
+      ],
+      "jobTitle": "Full Stack Developer",
+      "description": "Amrit Sharma is a Full Stack Developer and creator of CodeByAmrit. Explore projects, resume, and contact details.",
+      "image": "https://codebyamrit.co.in/images/logoMain.png"
+    }
+    </script>
+
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' https://*; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+
+    <title>Amrit Sharma | Full Stack Developer | CodeByAmrit</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
@@ -19,241 +65,102 @@
     </style>
 </head>
 
-<body class="dark:bg-gray-900 h-auto ">
-    <div class=" border-gray-200 dark:bg-gray-900 lg:mx-20">
-
-        <nav class="bg-white border-gray-200 dark:bg-gray-900  mt-4"
-            style="background-color: rgb(255, 255, 255) !important;">
-            <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4 dark:bg-gray-900"
-                style="z-index: 1000;">
-
-                <a href="/" class="items-center space-x-3 rtl:space-x-reverse dark:invert hidden md:flex"
-                    style="z-index: 1000;">
-                    <img src="./images/logoMain.png" class="h-8" alt="Logo" />
+<body class="dark:bg-gray-900 h-auto">
+    <div class="border-gray-200 dark:bg-gray-900 lg:mx-20">
+        <nav class="bg-white border-gray-200 dark:bg-gray-900 mt-4">
+            <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
+                <a href="/" class="items-center space-x-3 hidden md:flex">
+                    <img src="./images/logoMain.png" class="h-8" alt="Logo">
                 </a>
-                <div class="items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse hidden md:flex"
-                    style="z-index: 1000;">
+                <div class="items-center md:order-2 space-x-1 md:space-x-2 hidden md:flex">
                     <button id="theme-toggle" type="button"
-                        class="text-gray-900  font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5   focus:outline-none ">
+                        class="text-gray-900 font-medium rounded-lg text-sm px-4 py-2 focus:outline-none">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6" id="theme-svg">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
                         </svg>
                     </button>
-
                     <a href="https://wa.me/918986404987"
-                        class="text-white -mt-5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 hidden md:flex">Chat
-                        Now
-                    </a>
-
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 hidden md:flex">Chat
+                        Now</a>
                 </div>
-
-                <!-- middle Menu Fix Postion  -->
-                <div id="mega-menu" class="items-center justify-between w-full md:flex md:w-auto md:order-1 z-50">
+                <div id="mega-menu" class="items-center justify-between w-full md:flex md:w-auto md:order-1">
                     <div
-                        class="fixed top-8 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 shadow rounded-2xl px-3 py-2 z-50 scale-85">
-                        <ul class="flex flex-row md:space-x-4 rtl:space-x-reverse font-medium">
-                            <!-- Active Menu Item -->
+                        class="fixed top-8 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 shadow rounded-2xl px-3 py-2">
+                        <ul class="flex flex-row md:space-x-4 font-medium">
                             <li>
                                 <div
                                     class="bg-blue-700 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 text-white rounded-xl">
-                                    <a href="/" class="block py-1 px-4 rounded-xl hover:bg-blue-600">
-                                        Home
-                                    </a>
+                                    <a href="/" class="block py-1 px-4 rounded-xl hover:bg-blue-600">Home</a>
                                 </div>
                             </li>
-
-                            <!-- Inactive Menu Items -->
                             <li>
-                                <div class="bg-white text-black rounded-xl dark:bg-gray-800 ">
+                                <div class="bg-white text-black rounded-xl dark:bg-gray-800">
                                     <a href="#projects"
-                                        class="block py-1 px-4 rounded-xl hover:bg-blue-100 dark:hover:bg-gray-600 dark:text-white">
-                                        Project
-                                    </a>
+                                        class="block py-1 px-4 rounded-xl hover:bg-blue-100 dark:hover:bg-gray-600 dark:text-white">Project</a>
                                 </div>
                             </li>
                             <li>
-                                <div class="bg-white text-black rounded-xl dark:bg-gray-800 ">
+                                <div class="bg-white text-black rounded-xl dark:bg-gray-800">
                                     <a href="https://github.com/codebyamrit"
-                                        class="block py-1 px-4 rounded-xl hover:bg-blue-100 dark:hover:bg-gray-600 dark:text-white">
-                                        Github
-                                    </a>
+                                        class="block py-1 px-4 rounded-xl hover:bg-blue-100 dark:hover:bg-gray-600 dark:text-white">Github</a>
                                 </div>
                             </li>
                             <li>
-                                <div class="bg-white text-black rounded-xl dark:bg-gray-800 ">
+                                <div class="bg-white text-black rounded-xl dark:bg-gray-800">
                                     <a href="https://codebyamrit.github.io/resume/light-theme.html"
-                                        class="block py-1 px-4 rounded-xl hover:bg-blue-100 dark:hover:bg-gray-600 dark:text-white">
-                                        Resume
-                                    </a>
+                                        class="block py-1 px-4 rounded-xl hover:bg-blue-100 dark:hover:bg-gray-600 dark:text-white">Resume</a>
                                 </div>
                             </li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </nav>
 
-
         <div class="relative isolate px-6 lg:px-8">
-            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-                aria-hidden="true">
-                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%);">
-                </div>
-            </div>
-
-            <div
-                class="mx-auto  mt-10 z-50 flex flex-col-reverse md:flex-row items-center justify-between md:items-start ">
-
+            <div class="mx-auto mt-10 flex flex-col-reverse md:flex-row items-center justify-between">
                 <a href="https://wa.me/918986404987"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 flex md:hidden w-fit">Chat
-                    Now
-                </a>
-
-                <!-- Text Section -->
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 flex md:hidden w-fit">Chat
+                    Now</a>
                 <div class="text-left md:pr-10 relative md:pl-10">
                     <div id="quote-container" class="mb-10 mt-10 dark:text-gray-300 hidden sm:flex"></div>
-                    <div class=" text-center md:text-left">
-                        <p class="text-4xl md:text-6xl text-gray-700 dark:text-gray-300 text">
-                            Hello, I am
-                        </p>
-
+                    <div class="text-center md:text-left">
+                        <p class="text-4xl md:text-6xl text-gray-700 dark:text-gray-300">Hello, I am</p>
                         <div class="flex items-baseline justify-start dark:text-gray-300">
-                            <div class="text-4xl md:text-6xl pt-4"
-                                style=" font-family: 'Poppins', sans-serif !important">
-                                Amrit&nbsp;Sharma
-                            </div>
+                            <div class="text-4xl md:text-6xl pt-4" style="font-family: 'Poppins', sans-serif;">
+                                Amrit&nbsp;Sharma</div>
                         </div>
-
-                        <p class="text-4xl md:text-6xl text-gray-700 dark:text-gray-300">
-                            A&nbsp;Programmer
-                        </p>
+                        <p class="text-4xl md:text-6xl text-gray-700 dark:text-gray-300">A&nbsp;Programmer</p>
                     </div>
                     <div id="quote-container-english"
                         class="mb-10 mt-0 md:mt-10 text-center md:text-left dark:text-gray-300"></div>
-
-
                 </div>
-
-
-                <!-- Image Section -->
                 <div>
                     <img src="./images/middle.png" alt="pic2"
                         class="mt-6 sm:w-[450px] w-[200px] sm:rounded-none rounded-full">
                 </div>
             </div>
-
-
-
-            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-                aria-hidden="true">
-                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%);">
-                </div>
-            </div>
         </div>
 
-        <hr class="dark:border-gray-700 hidden md:block">
-        <div class="flex flex-col items-center justify-center mt-5">
-
-            <div class="flex flex-col items-center justify-center my-10">
-                <h1 class="text-4xl font-bold dark:text-gray-300 mb-5">Skills</h1>
-                <div class="grid grid-cols-3 gap-4 mt-5 mx-12">
-                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
-                        <h1 class="text-xl font-bold dark:text-gray-300">Frontend</h1>
-                        <ul class="mt-2">
-                            <li class="dark:text-gray-300">HTML</li>
-                            <li class="dark:text-gray-300">CSS</li>
-                            <li class="dark:text-gray-300">JavaScript</li>
-                            <li class="dark:text-gray-300">React</li>
-                            <li class="dark:text-gray-300">Vue</li>
-                        </ul>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
-                        <h1 class="text-xl font-bold dark:text-gray-300">Backend</h1>
-                        <ul class="mt-2">
-                            <li class="dark:text-gray-300">Node.js</li>
-                            <li class="dark:text-gray-300">Express</li>
-                            <li class="dark:text-gray-300">Npm</li>
-                        </ul>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
-                        <h1 class="text-xl font-bold dark:text-gray-300">Database</h1>
-                        <ul class="mt-2">
-                            <li class="dark:text-gray-300">MongoDB</li>
-                            <li class="dark:text-gray-300">MySQL</li>
-                            <li class="dark:text-gray-300">PostgreSQL</li>
-                            <li class="dark:text-gray-300">SQLite</li>
-                        </ul>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
-                        <h1 class="text-xl font-bold dark:text-gray-300">Hosting Technologies</h1>
-                        <ul class="mt-2">
-                            <li class="dark:text-gray-300">AWS</li>
-                            <li class="dark:text-gray-300">Cloudflare</li>
-                            <li class="dark:text-gray-300">Heroku</li>
-                            <li class="dark:text-gray-300">Netlify</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr class="dark:border-gray-700 hidden md:block">
-        <div class="flex flex-col items-center justify-center mt-5">
-
-            <div class="flex flex-col items-center justify-center my-10">
-                <h1 class="text-4xl font-bold dark:text-gray-300 mb-5">Projects</h1>
-                <div id="projects" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5 mx-12">
-                    <!-- insert from js script -->
-                </div>
-            </div>
-
-        </div>
-        <footer class="bg-white rounded-lg shadow  dark:bg-gray-800 ">
+        <footer class="bg-white rounded-lg shadow dark:bg-gray-800">
             <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
                 <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a
-                        href="https://codebyamrit.co.in/" class="hover:underline">CodeByAmrit™</a>. All Rights Reserved.
-                </span>
+                        href="https://codebyamrit.co.in/" class="hover:underline">CodeByAmrit™</a>. All Rights
+                    Reserved.</span>
                 <ul
                     class="flex flex-wrap items-center justify-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-                    <li>
-                        <a href="https://www.instagram.com" class="me-4 md:me-6 px-4">
-                            <img src="./images/instagram.svg" alt="Instagram" class="h-6">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.github.com" class="me-4 md:me-6 px-4">
-                            <img src="./images/github.svg" alt="GitHub" class="h-6">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com" class="me-4 md:me-6 px-4">
-                            <img src="./images/linkedin.svg" alt="LinkedIn" class="h-6">
-                        </a>
-                    </li>
-
+                    <li><a href="https://www.instagram.com" class="me-4 md:me-6 px-4"><img src="./images/instagram.svg"
+                                alt="Instagram" class="h-6"></a></li>
+                    <li><a href="https://www.github.com" class="me-4 md:me-6 px-4"><img src="./images/github.svg"
+                                alt="GitHub" class="h-6"></a></li>
+                    <li><a href="https://www.linkedin.com" class="me-4 md:me-6 px-4"><img src="./images/linkedin.svg"
+                                alt="LinkedIn" class="h-6"></a></li>
                 </ul>
             </div>
         </footer>
 
-
-
-
-        <style>
-            #scrollDiv.active {
-                cursor: grabbing;
-                cursor: -webkit-grabbing;
-            }
-
-            #scrollDiv {
-                cursor: grab;
-                cursor: -webkit-grab;
-                scroll-behavior: smooth;
-            }
-        </style>
         <script src="js/script.js"></script>
 </body>
 
