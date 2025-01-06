@@ -97,7 +97,7 @@ async function getProject() {
 
     const projects = document.getElementById('projects');
 
-    console.log(resultRepo);
+    // console.log(resultRepo);
 
     resultRepo.forEach(repo => {
         const project = document.createElement('div');
