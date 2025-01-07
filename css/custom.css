@@ -1,4 +1,6 @@
 .borderBlack {
   border-width: 1px;
   border-color: rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 255, 255);
+  z-index: 49;
 }

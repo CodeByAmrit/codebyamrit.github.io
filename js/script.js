@@ -57,7 +57,7 @@ function displayRandomQuote() {
     <p class="sanskrit-line">${quote.line}</p>
     
   `;
-    document.getElementById("quote-container-english").innerHTML = `<p class="meaning">${quote.meaning}</p>`;
+    document.getElementById("quote-container-english").innerHTML = `<p class="pt-5">${quote.meaning}</p>`;
 }
 
 // Call the function on page load
@@ -90,50 +90,111 @@ themeToggleBtn.addEventListener('click', function () {
 });
 
 // get github 
-const username = "codebyamrit";
+// const username = "codebyamrit";
 
-async function getProject() {
-    const resultRepo = await fetch(`https://api.github.com/users/${username}/repos`).then(response => response.json());
+// async function getProject() {
+//     const resultRepo = await fetch(`https://api.github.com/users/${username}/repos`).then(response => response.json());
 
-    const projects = document.getElementById('projects');
+//     const projects = document.getElementById('projects');
 
-    // console.log(resultRepo);
+//     // console.log(resultRepo);
 
-    resultRepo.forEach(repo => {
-        const project = document.createElement('div');
-        project.classList.add('project');
-        project.innerHTML = `
-            <a href="${repo.html_url}" target="_blank" class="block bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg">
-                    <h1 class="text-xl font-bold dark:text-gray-300">${repo.name}</h1>
-                    <p class="mt-2 dark:text-gray-300">${repo.description || 'No description available'}</p>
-                </div>
-                <div class="flex justify-between mt-4">
-                    <div class="flex items-center">
-                        <img src="images/github.svg" alt="GitHub Icon" class="w-6 h-6">
-                        <p class="ml-2 dark:text-gray-300">${repo.stargazers_count}</p>
-                    </div>
-                    <div class="flex items-center">
-                        <img src="images/fork.svg" alt="Fork Icon" class="w-6 h-6">
-                        <p class="ml-2 dark:text-gray-300">${repo.forks_count}</p>
-                    </div>
-                </div>
-                <div class="flex justify-between mt-4">
-                    <div class="flex items-center">
-                        <span class="dark:text-gray-300">Language: ${repo.language || 'N/A'}</span>
-                    </div>
-                    <div class="flex items-center">
-                        <span class="dark:text-gray-300">Updated: ${new Date(repo.updated_at).toLocaleDateString()}</span>
-                    </div>
-                </div>
-            </a>
-        `;
-        projects.appendChild(project);
+//     resultRepo.forEach(repo => {
+//         const project = document.createElement('div');
+//         project.classList.add('project');
+//         project.innerHTML = `
+//             <a href="${repo.html_url}" target="_blank" class="block bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+//                 <div class="bg-white dark:bg-gray-800 p-4 rounded-lg">
+//                     <h1 class="text-xl font-bold dark:text-gray-300">${repo.name}</h1>
+//                     <p class="mt-2 dark:text-gray-300">${repo.description || 'No description available'}</p>
+//                 </div>
+//                 <div class="flex justify-between mt-4">
+//                     <div class="flex items-center">
+//                         <img src="images/github.svg" alt="GitHub Icon" class="w-6 h-6">
+//                         <p class="ml-2 dark:text-gray-300">${repo.stargazers_count}</p>
+//                     </div>
+//                     <div class="flex items-center">
+//                         <img src="images/fork.svg" alt="Fork Icon" class="w-6 h-6">
+//                         <p class="ml-2 dark:text-gray-300">${repo.forks_count}</p>
+//                     </div>
+//                 </div>
+//                 <div class="flex justify-between mt-4">
+//                     <div class="flex items-center">
+//                         <span class="dark:text-gray-300">Language: ${repo.language || 'N/A'}</span>
+//                     </div>
+//                     <div class="flex items-center">
+//                         <span class="dark:text-gray-300">Updated: ${new Date(repo.updated_at).toLocaleDateString()}</span>
+//                     </div>
+//                 </div>
+//             </a>
+//         `;
+//         projects.appendChild(project);
+//     });
+
+// }
+
+// getProject(); 
+
+
+const cardSlider = document.getElementById('cardSlider');
+const next = document.getElementById('next');
+const prev = document.getElementById('prev');
+
+// Scroll next
+next.addEventListener('click', () => {
+    cardSlider.scrollBy({
+        left: 300, // Adjust to match the width of your card
+        behavior: 'smooth',
     });
+});
 
+// Scroll previous
+prev.addEventListener('click', () => {
+    cardSlider.scrollBy({
+        left: -300, // Adjust to match the width of your card
+        behavior: 'smooth',
+    });
+});
+
+// Function to add a card to the slider
+
+function addCardToSlider(heading, description, image, link) {
+    const card = document.createElement('div');
+    card.classList.add('flex-shrink-0', 'scale-75', 'ml-4', 'md:mx-0', 'md:scale-90', 'snap-center', 'max-w-sm', 'bg-white', 'border', 'border-gray-200', 'rounded-lg', 'shadow', 'dark:bg-gray-800', 'dark:border-gray-700', 'z-40');
+    card.innerHTML = `
+        <a href="#">
+            <img class="rounded-t-lg" src="images/${image}.png" alt="${image}" />
+        </a>
+        <div class="p-5">
+            <a href="#">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    ${heading}
+                </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                ${description}
+            </p>
+            <a href="${link}" target="_blank"
+                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Live Site
+                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                </svg>
+            </a>
+        </div>
+    `;
+    cardSlider.appendChild(card);
 }
 
-getProject();
+addCardToSlider('Global Wings', 'This API provides detailed information about aircraft, with the ability to filter results by various criteria.It is built using Node.js, Express.js, and MySQL', 'globalwings', 'https://globalwings.codebyamrit.co.in');
 
+addCardToSlider("Bajrang Vidya Mandir",
+    "Welcome to the Student Tracker repository. This project is a web application designed for teachers to manage student data efficiently.", "BajrangVidyaMandir", "https://bvmsonipat.site");
 
+addCardToSlider("File Manager 2025",
+    "The Student Data Management System is a Python-based desktop application GUI designed for efficiently managing student data.", "file_manager_2025", "https://codebyamrit.co.in/file_manager_2025/");
 
+addCardToSlider("SmartBoot",
+    "SmartBoot is a desktop software designed to make pendrives bootable with ease.", "boot", "https://github.com/CodeByAmrit/SmartBoot");
