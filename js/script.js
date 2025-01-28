@@ -190,8 +190,8 @@ function addCardToSlider(heading, description, image, link) {
 
 addCardToSlider('Global Wings', 'This API provides detailed information about aircraft, with the ability to filter results by various criteria.It is built using Node.js, Express.js, and MySQL', 'globalwings', 'https://globalwings.codebyamrit.co.in');
 
-addCardToSlider("Bajrang Vidya Mandir",
-    "Welcome to the Student Tracker repository. This project is a web application designed for teachers to manage student data efficiently.", "BajrangVidyaMandir", "https://bvmsonipat.site");
+addCardToSlider("Student Tracker",
+    "Welcome to the Student Tracker repository. This project is a web application designed for teachers to manage student data efficiently.", "BajrangVidyaMandir", "https://edu.codebyamrit.co.in/");
 
 addCardToSlider("File Manager 2025",
     "The Student Data Management System is a Python-based desktop application GUI designed for efficiently managing student data.", "file_manager_2025", "https://codebyamrit.co.in/file_manager_2025/");
