@@ -89,52 +89,21 @@ themeToggleBtn.addEventListener('click', function () {
     }
 });
 
-// get github 
-// const username = "codebyamrit";
-
-// async function getProject() {
-//     const resultRepo = await fetch(`https://api.github.com/users/${username}/repos`).then(response => response.json());
-
-//     const projects = document.getElementById('projects');
-
-//     // console.log(resultRepo);
-
-//     resultRepo.forEach(repo => {
-//         const project = document.createElement('div');
-//         project.classList.add('project');
-//         project.innerHTML = `
-//             <a href="${repo.html_url}" target="_blank" class="block bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-//                 <div class="bg-white dark:bg-gray-800 p-4 rounded-lg">
-//                     <h1 class="text-xl font-bold dark:text-gray-300">${repo.name}</h1>
-//                     <p class="mt-2 dark:text-gray-300">${repo.description || 'No description available'}</p>
-//                 </div>
-//                 <div class="flex justify-between mt-4">
-//                     <div class="flex items-center">
-//                         <img src="images/github.svg" alt="GitHub Icon" class="w-6 h-6">
-//                         <p class="ml-2 dark:text-gray-300">${repo.stargazers_count}</p>
-//                     </div>
-//                     <div class="flex items-center">
-//                         <img src="images/fork.svg" alt="Fork Icon" class="w-6 h-6">
-//                         <p class="ml-2 dark:text-gray-300">${repo.forks_count}</p>
-//                     </div>
-//                 </div>
-//                 <div class="flex justify-between mt-4">
-//                     <div class="flex items-center">
-//                         <span class="dark:text-gray-300">Language: ${repo.language || 'N/A'}</span>
-//                     </div>
-//                     <div class="flex items-center">
-//                         <span class="dark:text-gray-300">Updated: ${new Date(repo.updated_at).toLocaleDateString()}</span>
-//                     </div>
-//                 </div>
-//             </a>
-//         `;
-//         projects.appendChild(project);
-//     });
-
-// }
-
-// getProject(); 
-
+document.addEventListener("DOMContentLoaded", function () {
+    const fadeElements = document.querySelectorAll(".fade-in");
+    const fadeInOnScroll = () => {
+        fadeElements.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+                el.classList.add("show");
+            } else {
+                el.classList.remove("show");
+            }
+        });
+    };
+    window.addEventListener("scroll", fadeInOnScroll);
+    fadeInOnScroll();
+});
 
 const cardSlider = document.getElementById('cardSlider');
 const next = document.getElementById('next');

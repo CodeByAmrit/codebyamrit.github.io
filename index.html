@@ -40,13 +40,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <!-- Schema.org Structured Data -->
     <script src="./js/nonce-generator.js" defer></script>
+
 </head>
 
 
 <body class="dark:bg-gray-900 h-auto ">
     <div class=" border-gray-200 dark:bg-gray-900 lg:mx-20">
 
-        <nav class="bg-white border-gray-200 dark:bg-gray-900  mt-4"
+        <nav class="bg-white border-gray-200 dark:bg-gray-900  mt-4 "
             style="background-color: rgb(255, 255, 255) !important;">
             <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4 dark:bg-gray-900"
                 style="z-index: 1000;">
@@ -121,8 +122,8 @@
         </nav>
 
 
-        <div class="relative isolate px-6 lg:px-8">
-            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+        <div class="relative isolate px-6 lg:px-8 fade-in">
+            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80 fade-in"
                 aria-hidden="true">
                 <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
                     style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%);">
@@ -185,7 +186,7 @@
         <div class="flex flex-col items-center justify-center mt-5 z-50">
             <div class="flex flex-col items-center justify-center mt-10">
                 <h1 class="text-4xl font-bold dark:text-gray-300 mb-5">Skills</h1>
-                <section id="skills" class="max-w-[53rem] scroll-mt-28 text-center sm:mb-20">
+                <section id="skills" class="max-w-[53rem] scroll-mt-28 text-center sm:mb-20 fade-in">
                     <ul
                         class="flex flex-wrap justify-center gap-2 text-lg text-gray-800 w-96 md:w-full dark:text-gray-300 my-10">
                         <li class="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80"
@@ -244,8 +245,8 @@
         </div>
 
         <!-- my Academics  -->
-        <hr class="dark:border-gray-700 hidden md:block">
-        <div class="flex flex-col items-center justify-center mt-5">
+        <hr class="dark:border-gray-700 hidden md:block ">
+        <div class="flex flex-col items-center justify-center mt-5 fade-in">
             <h1 class="text-4xl font-bold dark:text-gray-300 mt-10">My Academics</h1>
             <div class="flex items-center justify-center mt-10">
                 <div class="mr-40 hidden md:block">
@@ -329,7 +330,7 @@
 
         <hr class="dark:border-gray-700 hidden md:block">
         <div class="flex flex-col items-center justify-center mt-5 mb-10">
-            <h1 class="text-4xl font-bold dark:text-gray-300 mt-10">Projects</h1>
+            <h1 class="text-4xl font-bold dark:text-gray-300 mt-10" id="projects">Projects</h1>
             <div class="relative overflow-hidden w-full mt-10">
                 <!-- Slider Container -->
                 <div id="cardSlider"
