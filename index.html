@@ -27,8 +27,14 @@
     <meta name="twitter:image" content="https://codebyamrit.co.in/images/logoMain.png" />
 
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; img-src 'self' https://*; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' https://static.cloudflareinsights.com https://codebyamrit.co.in/js; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.github.com;">
+    <!-- <meta http-equiv="Content-Security-Policy" 
+    content="default-src 'self'; 
+             img-src 'self' https://* data:; 
+             style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+             script-src 'self' 'unsafe-eval' https://static.cloudflareinsights.com https://codebyamrit.co.in/js https://unpkg.com; 
+             font-src 'self' https://fonts.gstatic.com; 
+             connect-src 'self' https://api.github.com https://prod.spline.design;"> -->
+
     <meta name="referrer" content="no-referrer">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
@@ -43,15 +49,14 @@
 
 </head>
 
-
 <body class="dark:bg-gray-900 h-auto overflow-x-hidden">
-    <video autoplay muted loop id="bgVideo1" class="absolute top-0 inset-0 h-full object-cover -z-22200">
+    <video autoplay muted loop id="bgVideo1" style="height: 96vh; width: 100vw;" class="absolute top-0 inset-0 h-full object-cover -z-22200">
         <source src="./images/bg.mp4" type="video/mp4" class="transform-gpu">
         Your browser does not support the video tag.
     </video>
     <div class=" border-gray-200 dark:bg-gray-900 lg:mx-20">
 
-        <nav class="bg-white border-gray-200 dark:bg-gray-900  mt-4 "
+        <nav class="bg-white border-gray-200 dark:bg-gray-900 pt-4"
             style="background-color: rgb(255, 255, 255) !important;">
             <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4 dark:bg-gray-900"
                 style="z-index: 1000;">
@@ -145,20 +150,20 @@
                 <!-- Text Section -->
                 <div class="text-left md:pr-10 relative md:pl-10">
                     <div id="quote-container" class="mb-10 mt-10 dark:text-gray-300 hidden sm:flex"></div>
-                    <div class=" text-center md:text-left pt-10 md:pt-0">
-                        <p class="text-4xl md:text-6xl text-gray-700 dark:text-gray-300 text">
+                    <div class=" text-center text-white md:text-left pt-10 md:pt-0">
+                        <p class="text-4xl md:text-6xl text-gray-700 dark:text-white text">
                             Hello, I am
                         </p>
 
                         <div
-                            class="flex items-baseline justify-center md:ustify-center lg:ustify-start dark:text-gray-300">
-                            <div class="text-4xl md:text-6xl pt-4 text-white"
+                            class="flex items-baseline justify-center md:ustify-center lg:ustify-start dark:text-white">
+                            <div class="text-4xl md:text-6xl pt-4"
                                 style=" font-family: 'Poppins', sans-serif !important">
                                 Amrit&nbsp;Sharma
                             </div>
                         </div>
 
-                        <p class="text-4xl md:text-6xl text-gray-700 dark:text-gray-300">
+                        <p class="text-4xl md:text-6xl text-gray-700 dark:text-white">
                             A&nbsp;Programmer
                         </p>
                     </div>
@@ -170,9 +175,13 @@
 
 
                 <!-- Image Section -->
-                <div>
-                    <img src="./images/middle.png" alt="pic2"
-                        class="mt-6 sm:w-[450px] w-[200px] rounded-full">
+                <div class="mt-6 w-full "  style="height:400px;">
+                    <!-- <img src="./images/middle.png" alt="pic2" class="mt-6 sm:w-[450px] w-[200px] rounded-full"> -->
+                    <spline-viewer url="https://prod.spline.design/4RqmSiTpn8TgjOR7/scene.splinecode"><img
+                            src="https://my.spline.design/robotfollowcursorforlandingpage-a485dbed1027985c3562e8110e242ae0/"
+                            alt="Spline preview" style="width: 100%; height: 400px;" /></spline-viewer>
+                    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.77/build/spline-viewer.js"
+                        async></script>
                 </div>
             </div>
 
