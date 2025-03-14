@@ -44,7 +44,11 @@
 </head>
 
 
-<body class="dark:bg-gray-900 h-auto ">
+<body class="dark:bg-gray-900 h-auto overflow-x-hidden">
+    <video autoplay muted loop id="bgVideo1" class="absolute top-0 inset-0 h-full object-cover -z-22200">
+        <source src="./images/bg.mp4" type="video/mp4" class="transform-gpu">
+        Your browser does not support the video tag.
+    </video>
     <div class=" border-gray-200 dark:bg-gray-900 lg:mx-20">
 
         <nav class="bg-white border-gray-200 dark:bg-gray-900  mt-4 "
@@ -59,7 +63,7 @@
                 <div class="items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse hidden md:flex"
                     style="z-index: 1000;">
                     <button id="theme-toggle" type="button"
-                        class="text-gray-900  font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5   focus:outline-none ">
+                        class="text-gray-900 hidden font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5   focus:outline-none ">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6" id="theme-svg">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -146,8 +150,9 @@
                             Hello, I am
                         </p>
 
-                        <div class="flex items-baseline justify-start dark:text-gray-300">
-                            <div class="text-4xl md:text-6xl pt-4"
+                        <div
+                            class="flex items-baseline justify-center md:ustify-center lg:ustify-start dark:text-gray-300">
+                            <div class="text-4xl md:text-6xl pt-4 text-white"
                                 style=" font-family: 'Poppins', sans-serif !important">
                                 Amrit&nbsp;Sharma
                             </div>
@@ -167,7 +172,7 @@
                 <!-- Image Section -->
                 <div>
                     <img src="./images/middle.png" alt="pic2"
-                        class="mt-6 sm:w-[450px] w-[200px] sm:rounded-none rounded-full">
+                        class="mt-6 sm:w-[450px] w-[200px] rounded-full">
                 </div>
             </div>
 
@@ -182,10 +187,10 @@
         </div>
 
         <!-- sills -->
-        <hr class="dark:border-gray-700 hidden md:block">
+        <hr class="dark:border-gray-700 hidden md:block z-50">
         <div class="flex flex-col items-center justify-center mt-5 z-50">
-            <div class="flex flex-col items-center justify-center mt-10">
-                <h1 class="text-4xl font-bold dark:text-gray-300 mb-5">Skills</h1>
+            <div class="flex flex-col items-center justify-center mt-10  z-50">
+                <h1 class="text-4xl font-bold dark:text-gray-300 mb-5  z-50">Skills</h1>
                 <section id="skills" class="max-w-[53rem] scroll-mt-28 text-center sm:mb-20 fade-in">
                     <ul
                         class="flex flex-wrap justify-center gap-2 text-lg text-gray-800 w-96 md:w-full dark:text-gray-300 my-10">
@@ -391,7 +396,7 @@
                 scroll-behavior: smooth;
             }
         </style>
-        <script src="js/script.js?v=4.0"></script>
+        <script src="js/script.js?v=5.0"></script>
 </body>
 
 </html>

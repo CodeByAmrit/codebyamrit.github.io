@@ -46,6 +46,8 @@ const sanskritQuotes = [
     }
 ];
 
+localStorage.setItem('theme', 'dark');
+
 // Function to display a random Sanskrit quote
 function displayRandomQuote() {
     const randomIndex = Math.floor(Math.random() * sanskritQuotes.length);
