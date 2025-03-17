@@ -40,8 +40,13 @@
     <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
 
     <title>Amrit Sharma | Full Stack Developer | CodeByAmrit</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-    <link rel="stylesheet" href="./css/style.css?v=2.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/second.css">
+    <!-- <link rel="stylesheet" href="./css/style.css?v=2.0"> -->
     <link rel="stylesheet" href="./css/custom.css?v=3.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <!-- Schema.org Structured Data -->
@@ -49,15 +54,171 @@
 
 </head>
 
-<body class="dark:bg-gray-900 h-auto overflow-x-hidden p-4">
-    <video autoplay muted loop id="bgVideo1" style="height: 96vh; width: 100vw;" class="blur-3xl absolute top-0 inset-0 h-full object-cover -z-22200">
+
+<body class="bg-black text-white p-2 dark:bg-gray-900 h-auto overflow-x-hidden p-4">
+    <nav class="flex justify-between items-center p-6 fixed top-0 left-0 right-0  px-10 z-30">
+        <div>
+            <a href="/" class="items-center space-x-3 rtl:space-x-reverse invert md:flex" style="z-index: 1000;">
+                <img src="./images/logoMain.png" class="h-8" alt="Logo" />
+            </a>
+        </div>
+        <div class="flex items-center space-x-4">
+            <!-- <ul class="flex space-x-8 items-center ">
+                <li class="cursor-pointer hover:underline-offset-8 hover:underline">Home</li>
+                <span class="rounded-full w-1 h-1 bg-white"></span>
+                <li class="cursor-pointer hover:underline-offset-8 hover:underline">Github</li>
+                <span class="rounded-full w-1 h-1 bg-white"></span>
+                <li class="cursor-pointer hover:underline-offset-8 hover:underline">Projects</li>
+                <span class="rounded-full w-1 h-1 bg-white"></span>
+                <li class="cursor-pointer hover:underline-offset-8 hover:underline">Contact</li>
+            </ul> -->
+        </div>
+        <div>
+            <button type="button"
+                class="py-2.5 px-5 rounded-full me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white border border-gray-200 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-1 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 cursor-pointer">
+                Hire Me
+            </button>
+        </div>
+    </nav>
+
+    <main class="flex flex-col justify-center items-center h-screen">
+        <div class="z-30 w-full flex justify-start -mt-10 scale-80">
+            <div
+                class="py-2 px-5 rounded-full me-2 mb-2 text-sm font-medium focus:outline-none bg-transparent border-[1.5px] border-gray text-white focus:z-10 focus:ring-1 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 cursor-pointer">
+                Full Stack Developer
+            </div>
+            <div
+                class="py-2 px-5 rounded-full me-2 mb-2 text-sm font-medium focus:outline-none bg-transparent border-[1.5px] border-gray text-white focus:z-10 focus:ring-1 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 cursor-pointer">
+                Problem Solver
+            </div>
+            <div
+                class="py-2 px-5 rounded-full me-2 mb-2 text-sm font-medium focus:outline-none bg-transparent border-[1.5px] border-gray text-white focus:z-10 focus:ring-1 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 cursor-pointer">
+                Tech Explorer
+            </div>
+        </div>
+
+        <div class="pl-20 bottom ">
+            <p
+                class="z-0 select-none w-full text-center text-[270px] font-semibold font-['PT_Sans_Narrow'] tracking-[100px] h-75 -mt-20">
+                AMRIT</p>
+            <div
+                class="absolute h-100 -z-10 w-100 bg-[#1f1436] blur-3xl rounded-full bottom-20 scale-125 left-1/2 transform -translate-x-1/2">
+            </div>
+            <!-- <div id="quote-container" class=" absolute right-0 top-70 rotate-90 flex"></div> -->
+            <div id="quote-container-english" class="absolute -right-10 top-70 rotate-90 z-40  flex">Technology grows
+                with logic.</div>
+        </div>
+
+
+        <img src="/images/amrit.png" alt="wings" class="z-10  h-screen  absolute bottom-0">
+
+        <div class="absolute flex flex-col bottom-8 max-w-80 text-justify left-15 h-fit w-100 gap-2">
+            <h2 class="text-xl tracking-widest text-gray-100">🚀 Passionate Web Developer</h2>
+            <p class="text-wrap text-xs font-normal text-gray-300 text-justify">
+                Building fast, responsive, and scalable web applications with modern technologies.
+                Transforming ideas into user-friendly digital experiences with clean code and creative solutions.
+            </p>
+        </div>
+
+        <div class="absolute right-15 bottom-8 flex flex-col max-w-75">
+            <span class="flex gap-2 mb-2">
+                <img src="./images/medal-.png" alt="Medal" width="20px" height="20px" class="invert w-8 h-8 ">
+                <p class="text-xs">Featured Projects | Innovative Solutions Built with Modern Web Technologies</p>
+            </span>
+            <a href="https://github.com/CodeByAmrit/" class="right-15 bottom-8 flex -space-x-4 rtl:space-x-reverse">
+                <img class="w-14 h-14 border-2 border-[#bccdff] rounded-full dark:border-gray-800"
+                    src="./images/file_manager_2025.png" alt="">
+                <img class="w-14 h-14 border-2 border-[#bccdff] rounded-full dark:border-gray-800"
+                    src="./images/BajrangVidyaMandir.png" alt="">
+                <img class="w-14 h-14 border-2 border-[#bccdff] rounded-full dark:border-gray-800"
+                    src="./images/mom.png" alt="">
+                <img class="w-14 h-14 border-2 border-[#bccdff] rounded-full dark:border-gray-800"
+                    src="./images/globalwings.png" alt="">
+                <img class="w-14 h-14 border-2 border-[#bccdff] rounded-full dark:border-gray-800"
+                    src="./images/gramofly.png" alt="">
+                <img class="w-14 h-14 border-2 border-[#bccdff] rounded-full dark:border-gray-800"
+                    src="https://raw.githubusercontent.com/CodeByAmrit/school/refs/heads/master/public/favicon.png"
+                    alt="student-tracker-banner">
+            </a>
+        </div>
+
+        <div class="w-full  mt-10 bg-opacity-0">
+
+            <div class="relative overflow-hidden w-full">
+                <div class="flex items-center gap-4 p-1 animate-scroll">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                    <img src="/images/peacock.png" alt="peacock" width="28" class="invert p-1">
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+    <div class="w-full h-10 bg-[#1a112d] -mt-5  flex overflow-hidden">
+        <div class="border-1 scale-75 rounded-lg flex justify-center items-center p-4 min-w-fit border-[#421c94]">Google
+            Sheets API</div>
+        <div class="border-1 scale-75 rounded-lg flex justify-center items-center p-4 min-w-fit border-[#421c94]">
+            MongoDB</div>
+        <div class="border-1 scale-75 rounded-lg flex justify-center items-center p-4 min-w-fit border-[#421c94]">MySQL
+        </div>
+        <div class="border-1 scale-75 rounded-lg flex justify-center items-center p-4 min-w-fit border-[#421c94]">API
+            Integration</div>
+        <div class="border-1 scale-75 rounded-lg flex justify-center items-center p-4 min-w-fit border-[#421c94]">UI/UX
+            Design</div>
+        <div class="border-1 scale-75 rounded-lg flex justify-center items-center p-4 min-w-fit border-[#421c94]">
+            Responsive Design</div>
+        <div class="border-1 scale-75 rounded-lg flex justify-center items-center p-4 min-w-fit border-[#421c94]">
+            Next.js</div>
+        <div class="border-1 scale-75 rounded-lg flex justify-center items-center p-4 min-w-fit border-[#421c94]">Git &
+            GitHub</div>
+        <div class="border-1 scale-75 rounded-lg flex justify-center items-center p-4 min-w-fit border-[#421c94]">
+            Problem Solver</div>
+        <div class="border-1 scale-75 rounded-lg flex justify-center items-center p-4 min-w-fit border-[#421c94]">
+            Creative Coder</div>
+        <div class="border-1 scale-75 rounded-lg flex justify-center items-center p-4 min-w-fit border-[#421c94]">
+            JavaScript Enthusiast</div>
+        <div class="border-1 scale-75 rounded-lg flex justify-center items-center p-4 min-w-fit border-[#421c94]">Tech
+            Explorer</div>
+        <div class="border-1 scale-75 rounded-lg flex justify-center items-center p-4 min-w-fit border-[#421c94]">AI &
+            Automation</div>
+    </div>
+    <!-- <script src="./js/2.js"></script> -->
+    <video autoplay muted loop id="bgVideo1" style="height: 96vh; width: 100vw;"
+        class="blur-3xl absolute top-0 inset-0 h-full object-cover -z-22200">
         <source src="./images/bg.mp4" type="video/mp4" class="transform-gpu">
         Your browser does not support the video tag.
     </video>
     <div class=" border-gray-200 dark:bg-gray-900 lg:mx-20">
 
-        <nav class="bg-white border-gray-200 dark:bg-gray-900 "
-            style="background-color: rgb(255, 255, 255) !important;">
+        <nav class="bg-black border-gray-200 dark:bg-gray-900 " style="background-color: rgb(0, 0, 0) !important;">
             <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4 dark:bg-gray-900"
                 style="z-index: 1000;">
 
@@ -175,7 +336,7 @@
 
 
                 <!-- Image Section -->
-                <div class="mt-6 w-full "  style="height:400px;">
+                <div class="mt-6 w-full " style="height:400px;">
                     <!-- <img src="./images/middle.png" alt="pic2" class="mt-6 sm:w-[450px] w-[200px] rounded-full"> -->
                     <spline-viewer url="https://prod.spline.design/4RqmSiTpn8TgjOR7/scene.splinecode"><img
                             src="https://my.spline.design/robotfollowcursorforlandingpage-a485dbed1027985c3562e8110e242ae0/"
@@ -278,7 +439,8 @@
                                     <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
                                 </svg>
                             </span>
-                            <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">B.
+                            <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                                B.
                                 Tech
                                 Spec. AIML<span
                                     class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 ms-3">Latest</span>
@@ -286,7 +448,8 @@
                             <time
                                 class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">From
                                 2023 to 2026</time>
-                            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Maharishi Dayanand
+                            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Maharishi
+                                Dayanand
                                 Univeristy, Rohtak</p>
                             <!-- <a href="#"
                                 class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"><svg
@@ -333,7 +496,8 @@
                             <time
                                 class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">From
                                 to 2018 to 2021</time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Rishikul Vidyapeeth, Devru
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Rishikul Vidyapeeth,
+                                Devru
                                 Road, Sonipat</p>
                         </li>
                     </ol>
@@ -366,7 +530,8 @@
         <footer class="bg-white rounded-lg shadow  dark:bg-gray-800 ">
             <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
                 <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a
-                        href="https://codebyamrit.co.in/" class="hover:underline">CodeByAmrit™</a>. All Rights Reserved.
+                        href="https://codebyamrit.co.in/" class="hover:underline">CodeByAmrit™</a>. All Rights
+                    Reserved.
                 </span>
                 <ul
                     class="flex flex-wrap items-center justify-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
