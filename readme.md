@@ -20,8 +20,8 @@
 ---
 
 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 20px;">
-    <div style="flex: 1; max-width: 45%;">
-        <img align="left" width="100%" alt="Metrics" src="./images/background.gif">
+    <div style="flex: 1; max-width: 45%; margin-left: 10px; padding-left: 10px;">
+        <img align="left" width="50%" alt="Metrics" src="./images/background.gif">
     </div>
 
   <div style="flex: 1; max-width: 45%; text-align: left; margin-left: 20px;">
