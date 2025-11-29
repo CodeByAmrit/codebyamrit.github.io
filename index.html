@@ -107,7 +107,7 @@
       font-weight: 600;
     }
 
-    .skill-tag cursor-pointer {
+    .skill-tag.cursor-pointer {
       background-color: rgba(99, 102, 241, 0.1);
       border: 1px solid rgba(99, 102, 241, 0.3);
       color: #a5b4fc;
@@ -115,7 +115,7 @@
       display: inline-block;
     }
 
-    .skill-tag cursor-pointer:hover {
+    .skill-tag.cursor-pointer:hover {
       background-color: rgba(99, 102, 241, 0.2);
       transform: translateY(-2px);
     }
@@ -172,7 +172,7 @@
   </header>
 
   <main class="container mx-auto px-6 relative z-10">
-    <!-- HERO SECTION - UPDATED WITH FLIP WORDS -->
+    <!-- HERO SECTION -->
     <section id="home" class="min-h-screen flex items-center pt-24 md:pt-0">
       <div class="grid md:grid-cols-2 gap-12 items-center w-full">
 
@@ -237,20 +237,23 @@
       </h2>
       <div class="mt-12 grid md:grid-cols-6 gap-12 items-start">
         <div class="md:col-span-3 anim-up">
-          <div class="w-full h-full">
-            <model-viewer class="w-full h-96" src="./images/model.glb" alt="A description of your 3D model" exposure="1"
-              shadow-intensity="2" shadow-softness="0.8" disable-zoom camera-controls interaction-prompt="none"
-              camera-orbit="-20deg 80deg 25m" animation-name="Run" loading="" autoplay environment-image="neutral"
-              </model-viewer>
+          <div class="w-full flex justify-center">
+            <model-viewer id="heroModel" class="w-full max-w-xl h-96" src="./images/model.glb" alt="3D model"
+              exposure="1" shadow-intensity="2" shadow-softness="0.8" disable-zoom interaction-prompt="none"
+              camera-orbit="-20deg 80deg 25m" animation-name="Run" autoplay environment-image="neutral">
+            </model-viewer>
           </div>
         </div>
         <div class="md:col-span-3">
           <h3 class=" text-2xl text-white anim-up">Academics</h3>
           <div class="relative mt-6 border-l-2 border-gray-700 pl-8">
 
+            <!-- Item 1 -->
             <div class="mb-10 academic-item">
+              <!-- Dot is static, positioned relative to the timeline border -->
               <div class="absolute w-4 h-4 bg-[#6366f1] rounded-full -left-2.5 mt-1.5 border-4 border-gray-900/60">
               </div>
+              <!-- Content will animate slide-in -->
               <div class="academic-content">
                 <time class="text-sm font-medium text-gray-400">2023 - 2026</time>
                 <h4 class="text-lg font-semibold text-white mt-1">B.Tech in AI & ML</h4>
@@ -258,6 +261,7 @@
               </div>
             </div>
 
+            <!-- Item 2 -->
             <div class="mb-10 academic-item">
               <div class="absolute w-4 h-4 bg-[#6366f1] rounded-full -left-2.5 mt-1.5 border-4 border-gray-900/60">
               </div>
@@ -268,6 +272,7 @@
               </div>
             </div>
 
+            <!-- Item 3 -->
             <div class="academic-item">
               <div class="absolute w-4 h-4 bg-[#6366f1] rounded-full -left-2.5 mt-1.5 border-4 border-gray-900/60">
               </div>
@@ -427,7 +432,7 @@
             <div
               class="flex flex-wrap gap-2 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
               <span
-                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">NodeJS</span>
+                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">EXPRESS</span>
               <span
                 class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">MySQL</span>
               <span
@@ -463,7 +468,7 @@
             <div
               class="flex flex-wrap gap-2 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
               <span
-                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">NodeJS</span>
+                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">Express</span>
               <span
                 class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">EJS</span>
               <span
@@ -500,9 +505,11 @@
             <div
               class="flex flex-wrap gap-2 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
               <span
-                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">Next.js</span>
+                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">Python</span>
               <span
-                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">Firebase</span>
+                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">Cython</span>
+              <span
+                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">C / C++</span>
             </div>
             <div class="flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150">
               <a href="https://codebyamrit.co.in/file_manager_2025/" target="_blank"
@@ -721,18 +728,29 @@
         });
       });
 
-      // 3. Academic Timeline Stagger
-      gsap.from(".academic-content", {
+      // 3. Academic Timeline Animation (Synchronized & Fixed Stacking)
+      const academicTl = gsap.timeline({
         scrollTrigger: {
           trigger: "#about",
-          start: "top 70%",
-        },
-        x: 30,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.2,
-        ease: "power2.out"
+          start: "top 75%",
+        }
       });
+
+      // Animate the WRAPPER opacity only (dot fades in place)
+      academicTl.from(".academic-item", {
+        opacity: 0,
+        duration: 1,
+        stagger: 0.4 // Delay between each item
+      }, 0); 
+
+      // Animate the CONTENT slide (Left to Right)
+      academicTl.from(".academic-content", {
+        x: -50,
+        duration: 1,
+        stagger: 0.4, // Must match opacity stagger to sync
+        ease: "power3.out"
+      }, 0); 
+
 
       // 4. Skills Cards Stagger
       gsap.from(".skill-card", {
@@ -771,6 +789,29 @@
         duration: 0.5,
         ease: "back.out(1.7)"
       });
+
+      // --- Model & Other Observers ---
+      const model = document.getElementById("heroModel");
+      
+      // Rotate model on scroll
+      window.addEventListener("scroll", () => {
+        const sc = window.scrollY * 0.1; 
+        if(model) model.cameraOrbit = `${sc - 100}deg 80deg 25m`;
+      });
+
+      // Play animation when model enters view
+      if(model) {
+        const modelObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) model.play();
+              else model.pause(); 
+            });
+          },
+          { threshold: 0.6 }
+        );
+        modelObserver.observe(model);
+      }
 
     });
   </script>
