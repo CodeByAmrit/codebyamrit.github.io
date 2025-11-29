@@ -42,6 +42,7 @@
   <style>
     * {
       font-family: "Inter", sans-serif;
+      scroll-behavior: smooth;
     }
 
 
@@ -238,8 +239,14 @@
       <div class="mt-12 grid md:grid-cols-6 gap-12 items-start">
         <div class="md:col-span-3 anim-up">
           <div class="w-full flex justify-center">
-            <model-viewer id="heroModel" class="w-full max-w-xl h-96" src="./images/model.glb" alt="3D model"
-              exposure="1" shadow-intensity="2" shadow-softness="0.8" disable-zoom interaction-prompt="none"
+            <!-- 
+                MODEL VIEWER UPDATE:
+                1. Removed 'src' attribute to prevent auto-load (JS handles it)
+                2. Added loading="eager" for priority
+                3. ID 'heroModel' is used by JS
+            -->
+            <model-viewer id="heroModel" class="w-full max-w-xl h-96" alt="3D model" loading="eager" exposure="1"
+              shadow-intensity="2" shadow-softness="0.8" disable-zoom interaction-prompt="none"
               camera-orbit="-20deg 80deg 25m" animation-name="Run" autoplay environment-image="neutral">
             </model-viewer>
           </div>
@@ -468,7 +475,7 @@
             <div
               class="flex flex-wrap gap-2 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
               <span
-                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">Express</span>
+                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">NodeJS</span>
               <span
                 class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">EJS</span>
               <span
@@ -505,11 +512,9 @@
             <div
               class="flex flex-wrap gap-2 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
               <span
-                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">Python</span>
+                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">Next.js</span>
               <span
-                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">Cython</span>
-              <span
-                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">C / C++</span>
+                class="text-[10px] uppercase tracking-wider bg-[#6366f1]/20 border border-[#6366f1]/50 text-[#a5b4fc] px-2 py-1 rounded">Firebase</span>
             </div>
             <div class="flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150">
               <a href="https://codebyamrit.co.in/file_manager_2025/" target="_blank"
@@ -749,7 +754,7 @@
         duration: 1,
         stagger: 0.4, // Must match opacity stagger to sync
         ease: "power3.out"
-      }, 0); 
+      }, 0);
 
 
       // 4. Skills Cards Stagger
@@ -790,27 +795,77 @@
         ease: "back.out(1.7)"
       });
 
-      // --- Model & Other Observers ---
-      const model = document.getElementById("heroModel");
-      
+      // --- Model Caching & Loading Logic ---
+      const modelViewer = document.getElementById("heroModel");
+      const MODEL_URL = "./images/model.glb";
+
+      async function loadAndCacheModel() {
+        if (!modelViewer) return;
+
+        try {
+          // 1. Check if Cache API is supported (standard in modern browsers)
+          if ('caches' in window) {
+            // Open (or create) a specific cache for our media
+            const cache = await caches.open('app-media-cache-v1');
+
+            // Check if we already have the model
+            const cachedResponse = await cache.match(MODEL_URL);
+
+            if (cachedResponse) {
+              console.log("Loading model from cache...");
+              const blob = await cachedResponse.blob();
+              const objectUrl = URL.createObjectURL(blob);
+              modelViewer.src = objectUrl;
+            } else {
+              console.log("Fetching model from network...");
+              const response = await fetch(MODEL_URL);
+
+              // Clone the response because the stream can only be consumed once
+              const clonedResponse = response.clone();
+
+              // Store it in the cache for next time
+              cache.put(MODEL_URL, clonedResponse);
+
+              // Create blob for immediate use
+              const blob = await response.blob();
+              const objectUrl = URL.createObjectURL(blob);
+              modelViewer.src = objectUrl;
+            }
+          } else {
+            // Fallback for older browsers: just load directly
+            modelViewer.src = MODEL_URL;
+          }
+        } catch (error) {
+          console.error("Model loading error:", error);
+          // Last resort fallback
+          modelViewer.src = MODEL_URL;
+        }
+      }
+
+      // Trigger the caching logic
+      loadAndCacheModel();
+
+      // --- Model Observers (Rotation & Play/Pause) ---
       // Rotate model on scroll
       window.addEventListener("scroll", () => {
-        const sc = window.scrollY * 0.1; 
-        if(model) model.cameraOrbit = `${sc - 100}deg 80deg 25m`;
+        if (modelViewer) {
+          const sc = window.scrollY * 0.1;
+          modelViewer.cameraOrbit = `${sc - 80}deg 80deg 25m`; // Adjusted start angle
+        }
       });
 
-      // Play animation when model enters view
-      if(model) {
+      // Play animation only when in view to save resources
+      if (modelViewer) {
         const modelObserver = new IntersectionObserver(
           (entries) => {
             entries.forEach(entry => {
-              if (entry.isIntersecting) model.play();
-              else model.pause(); 
+              if (entry.isIntersecting) modelViewer.play();
+              else modelViewer.pause();
             });
           },
-          { threshold: 0.6 }
+          { threshold: 0.2 }
         );
-        modelObserver.observe(model);
+        modelObserver.observe(modelViewer);
       }
 
     });
