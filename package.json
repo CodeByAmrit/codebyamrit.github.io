@@ -1,5 +1,26 @@
 {
+  "name": "codebyamrit.github.io",
+  "version": "1.0.0",
+  "description": "[![Alt text](./images/banner.png)](https://github.com/codebyamrit)",
+  "homepage": "https://github.com/CodeByAmrit/codebyamrit.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/CodeByAmrit/codebyamrit.github.io/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeByAmrit/codebyamrit.github.io.git"
+  },
+  "license": "ISC",
+  "author": "Amrit",
+  "type": "commonjs",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "build:css": "npx @tailwindcss/cli -i ./src/input.css -o ./css/styles.css --watch"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.17"
+  },
   "devDependencies": {
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^4.1.17"
   }
 }

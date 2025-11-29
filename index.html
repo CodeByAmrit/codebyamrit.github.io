@@ -30,25 +30,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap"
     rel="stylesheet" />
+  <link rel="stylesheet" href="./css/styles.css">
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ["Inter", "sans-serif"],
-            heading: ["Poppins", "sans-serif"],
-          },
-          colors: {
-            // New Peaceful Color Palette
-            primary: "#6366f1", // Indigo-500
-            "primary-hover": "#4f46e5", // Indigo-600
-          },
-        },
-      },
-    };
-  </script>
 
   <style>
     body {
@@ -144,17 +127,18 @@
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
       <a href="#" class="flex items-center space-x-2">
         <img src="./images/logoMain.png" class="h-8 invert" alt="Amrit Sharma Logo" />
-        <span class="font-heading font-semibold text-xl text-white">Amrit Sharma</span>
+        <span class="text-xl text-white">Amrit Sharma</span>
       </a>
       <nav class="hidden md:flex items-center space-x-8">
-        <a href="#about" class="nav-link text-gray-300 hover:text-primary transition-colors duration-300">About</a>
-        <a href="#skills" class="nav-link text-gray-300 hover:text-primary transition-colors duration-300">Skills</a>
+        <a href="#about" class="nav-link text-gray-300 hover:text-[#6366f1] transition-colors duration-300">About</a>
+        <a href="#skills" class="nav-link text-gray-300 hover:text-[#6366f1] transition-colors duration-300">Skills</a>
         <a href="#projects"
-          class="nav-link text-gray-300 hover:text-primary transition-colors duration-300">Projects</a>
-        <a href="#contact" class="nav-link text-gray-300 hover:text-primary transition-colors duration-300">Contact</a>
+          class="nav-link text-gray-300 hover:text-[#6366f1] transition-colors duration-300">Projects</a>
+        <a href="#contact"
+          class="nav-link text-gray-300 hover:text-[#6366f1] transition-colors duration-300">Contact</a>
       </nav>
       <a href="https://codebyamrit.github.io/profile.html" target="_blank"
-        class="hidden md:inline-block bg-primary text-white font-medium px-5 py-2.5 rounded-lg hover:bg-primary-hover transition-colors duration-300">
+        class="hidden md:inline-block bg-[#6366f1] text-white font-medium px-5 py-2.5 rounded-lg hover:bg-[#6366f1]-hover transition-colors duration-300">
         View Resume
       </a>
       <button id="mobile-menu-button" class="md:hidden text-white">
@@ -164,15 +148,16 @@
       </button>
     </div>
     <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
-      <a href="#about" class="block nav-link text-gray-300 hover:text-primary transition-colors duration-300">About</a>
+      <a href="#about"
+        class="block nav-link text-gray-300 hover:text-[#6366f1] transition-colors duration-300">About</a>
       <a href="#skills"
-        class="block nav-link text-gray-300 hover:text-primary transition-colors duration-300">Skills</a>
+        class="block nav-link text-gray-300 hover:text-[#6366f1] transition-colors duration-300">Skills</a>
       <a href="#projects"
-        class="block nav-link text-gray-300 hover:text-primary transition-colors duration-300">Projects</a>
+        class="block nav-link text-gray-300 hover:text-[#6366f1] transition-colors duration-300">Projects</a>
       <a href="#contact"
-        class="block nav-link text-gray-300 hover:text-primary transition-colors duration-300">Contact</a>
+        class="block nav-link text-gray-300 hover:text-[#6366f1] transition-colors duration-300">Contact</a>
       <a href="https://codebyamrit.github.io/resume/light-theme.html" target="_blank"
-        class="block bg-primary text-white text-center font-medium mt-2 px-5 py-2.5 rounded-lg hover:bg-primary-hover transition-colors duration-300">
+        class="block bg-[#6366f1] text-white text-center font-medium mt-2 px-5 py-2.5 rounded-lg hover:bg-[#6366f1]-hover transition-colors duration-300">
         View Resume
       </a>
     </div>
@@ -185,7 +170,7 @@
           <h1 class="section-heading text-4xl md:text-6xl text-white leading-tight">
             Amrit Sharma
           </h1>
-          <p class="text-2xl md:text-3xl text-primary font-medium mt-2">
+          <p class="text-2xl md:text-3xl text-[#6366f1] font-medium mt-2">
             Full Stack Developer
           </p>
           <p class="mt-6 text-lg text-gray-200 max-w-xl mx-auto md:mx-0">
@@ -195,7 +180,7 @@
           </p>
           <div class="mt-8 flex justify-center md:justify-start items-center gap-4">
             <a href="https://wa.me/919817044885"
-              class="bg-primary text-white font-medium px-8 py-3 rounded-lg hover:bg-primary-hover transition-colors duration-300">
+              class="bg-[#6366f1] text-white font-medium px-8 py-3 rounded-lg hover:bg-[#6366f1]-hover transition-colors duration-300">
               Get in Touch
             </a>
             <a href="https://github.com/CodeByAmrit" target="_blank"
@@ -214,8 +199,8 @@
             </a>
           </div>
         </div>
-        <div class="h-[400px] md:h-[500px]">
-          <spline-viewer url="https://prod.spline.design/4RqmSiTpn8TgjOR7/scene.splinecode"></spline-viewer>
+        <div id="astronaut-root" class="h-[400px] md:h-[500px] mt-20">
+          <img src="./images/amritnew.png" alt="my" class="[mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]">
         </div>
       </div>
     </section>
@@ -226,7 +211,7 @@
       </h2>
       <div class="mt-12 grid md:grid-cols-6 gap-12 items-start">
         <div class="md:col-span-3">
-          <h3 class="font-heading text-2xl text-white">Who I Am</h3>
+          <h3 class=" text-2xl text-white">Who I Am</h3>
           <p class="mt-4 text-gray-300">
             I am a dedicated and passionate developer with a strong foundation
             in both front-end and back-end technologies. My journey started
@@ -237,10 +222,11 @@
           </p>
         </div>
         <div class="md:col-span-3">
-          <h3 class="font-heading text-2xl text-white">Academics</h3>
+          <h3 class=" text-2xl text-white">Academics</h3>
           <div class="relative mt-6 border-l-2 border-gray-700 pl-8">
             <div class="mb-10">
-              <div class="absolute w-4 h-4 bg-primary rounded-full -left-2.5 mt-1.5 border-4 border-gray-900/60"></div>
+              <div class="absolute w-4 h-4 bg-[#6366f1] rounded-full -left-2.5 mt-1.5 border-4 border-gray-900/60">
+              </div>
               <time class="text-sm font-medium text-gray-400">2023 - 2026</time>
               <h4 class="text-lg font-semibold text-white mt-1">
                 B.Tech in AI & ML
@@ -250,7 +236,8 @@
               </p>
             </div>
             <div class="mb-10">
-              <div class="absolute w-4 h-4 bg-primary rounded-full -left-2.5 mt-1.5 border-4 border-gray-900/60"></div>
+              <div class="absolute w-4 h-4 bg-[#6366f1] rounded-full -left-2.5 mt-1.5 border-4 border-gray-900/60">
+              </div>
               <time class="text-sm font-medium text-gray-400">2021 - 2023</time>
               <h4 class="text-lg font-semibold text-white mt-1">
                 Diploma in Computer Engineering
@@ -258,7 +245,8 @@
               <p class="text-gray-400">Government Polytechnic, Sonipat</p>
             </div>
             <div>
-              <div class="absolute w-4 h-4 bg-primary rounded-full -left-2.5 mt-1.5 border-4 border-gray-900/60"></div>
+              <div class="absolute w-4 h-4 bg-[#6366f1] rounded-full -left-2.5 mt-1.5 border-4 border-gray-900/60">
+              </div>
               <time class="text-sm font-medium text-gray-400">2018 - 2021</time>
               <h4 class="text-lg font-semibold text-white mt-1">
                 Secondary & Sr. Secondary Education
@@ -377,7 +365,7 @@
         <div class="project-card glass-effect rounded-xl overflow-hidden transition-all duration-300">
           <img src="./images/streamvision.png" alt="StreamVision" class="w-full h-48 object-scale-down bg-black" />
           <div class="p-6">
-            <h3 class="font-heading text-xl text-white">Stream Vision</h3>
+            <h3 class=" text-xl text-white">Stream Vision</h3>
             <p class="mt-2 text-gray-300 text-sm">
               View and manage your RTSP CCTV camera feeds live in real time
               with powerful analytics and security
@@ -389,8 +377,8 @@
               <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded">FFmpeg</span>
             </div>
             <div class="mt-5 flex items-center gap-4">
-              <a href="https://cctvcameralive.in" class="text-primary hover:underline">Live Demo →</a>
-              <a href="https://github.com/CodeByAmrit/streamVision" class="text-primary hover:underline">GitHub →</a>
+              <a href="https://cctvcameralive.in" class="text-[#6366f1] hover:underline">Live Demo →</a>
+              <a href="https://github.com/CodeByAmrit/streamVision" class="text-[#6366f1] hover:underline">GitHub →</a>
             </div>
           </div>
         </div>
@@ -398,7 +386,7 @@
         <div class="project-card glass-effect rounded-xl overflow-hidden transition-all duration-300">
           <img src="./images/BajrangVidyaMandir.png" alt="School Website Project" class="w-full h-48 object-cover" />
           <div class="p-6">
-            <h3 class="font-heading text-xl text-white">
+            <h3 class=" text-xl text-white">
               Student Tracker System
             </h3>
             <p class="mt-2 text-gray-300 text-sm">
@@ -412,8 +400,8 @@
               <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded">EJS</span>
             </div>
             <div class="mt-5 flex items-center gap-4">
-              <a href="https://edu.codebyamrit.co.in" class="text-primary hover:underline">Live Demo →</a>
-              <a href="https://github.com/codebyamrit/school" class="text-primary hover:underline">GitHub →</a>
+              <a href="https://edu.codebyamrit.co.in" class="text-[#6366f1] hover:underline">Live Demo →</a>
+              <a href="https://github.com/codebyamrit/school" class="text-[#6366f1] hover:underline">GitHub →</a>
             </div>
           </div>
         </div>
@@ -422,7 +410,7 @@
           <img src="https://raw.githubusercontent.com/CodeByAmrit/file_manager_2025/main/screenshots/banner.png"
             alt="File Manager Project" class="w-full h-48 object-scale-down bg-white" />
           <div class="p-6">
-            <h3 class="font-heading text-xl text-white">
+            <h3 class=" text-xl text-white">
               Cloud File Manager
             </h3>
             <p class="mt-2 text-gray-300 text-sm">
@@ -434,9 +422,9 @@
               <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded">Firebase</span>
             </div>
             <div class="mt-5 flex items-center gap-4">
-              <a href="https://codebyamrit.co.in/file_manager_2025/" class="text-primary hover:underline">Live Demo
+              <a href="https://codebyamrit.co.in/file_manager_2025/" class="text-[#6366f1] hover:underline">Live Demo
                 →</a>
-              <a href="https://github.com/codebyamrit/file_manager_2025/" class="text-primary hover:underline">GitHub
+              <a href="https://github.com/codebyamrit/file_manager_2025/" class="text-[#6366f1] hover:underline">GitHub
                 →</a>
             </div>
           </div>
@@ -455,7 +443,7 @@
       </p>
       <div class="mt-8">
         <a href="https://wa.me/919817044885"
-          class="inline-block bg-primary text-white font-medium text-lg px-10 py-4 rounded-lg hover:bg-primary-hover transition-colors duration-300">
+          class="inline-block bg-[#6366f1] text-white font-medium text-lg px-10 py-4 rounded-lg hover:bg-[#6366f1]-hover transition-colors duration-300">
           Say Hello
         </a>
       </div>

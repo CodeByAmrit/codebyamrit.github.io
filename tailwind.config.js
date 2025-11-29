@@ -1,23 +1,15 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: 'class',
-  content: ["./**/*.{html,js}"],
+export default {
   theme: {
-    extend: {},
-  },
-  plugins: [
-    function ({ addUtilities }) {
-      addUtilities({
-        '.no-scrollbar': {
-          /* Hide the scrollbar in most browsers */
-          '-ms-overflow-style': 'none', /* Internet Explorer 10+ */
-          'scrollbar-width': 'none', /* Firefox */
-        },
-        '.no-scrollbar::-webkit-scrollbar': {
-          display: 'none', /* Safari and Chrome */
-        },
-      });
+    extend: {
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+        heading: ["Poppins", "sans-serif"],
+      },
+      colors: {
+        primary: "#6366f1",
+        "primary-hover": "#4f46e5",
+      },
     },
-  ],
-}
-
+  },
+};
