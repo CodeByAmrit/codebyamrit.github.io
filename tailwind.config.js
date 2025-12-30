@@ -3,12 +3,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        heading: ["Poppins", "sans-serif"],
+        sans: ['Inter', 'sans-serif'],
+        heading: ['Poppins', 'sans-serif'],
       },
       colors: {
-        primary: "#6366f1",
-        "primary-hover": "#4f46e5",
+        'primary': '#6366f1',
+        'primary-hover': '#4f46e5',
       },
     },
   },
