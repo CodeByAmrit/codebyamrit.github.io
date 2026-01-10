@@ -17,6 +17,7 @@
   "scripts": {
     "prepare": "husky install",
     "build:css": "npx @tailwindcss/cli -i ./src/input.css -o ./css/styles.css --watch",
+    "build": "npx @tailwindcss/cli -i ./src/input.css -o ./css/styles.css --minify",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
