@@ -82,7 +82,7 @@ export default function Hero() {
       <HeroBackground />
 
       <div className="max-w-7xl mx-auto px-6 w-full">
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center -mt-10">
           {/* ── Left Content ── */}
           <motion.div
             variants={containerVariants}
@@ -171,7 +171,7 @@ export default function Hero() {
           >
             {/* Ambient Background Glows */}
             <div className="absolute w-[120%] h-[120%] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none" />
-            
+
             <div className="relative z-10 w-80 h-80 md:w-96 md:h-96 lg:w-[600px] lg:h-[600px]">
               <Image
                 src="/amritnew.png"
@@ -180,8 +180,8 @@ export default function Hero() {
                 priority
                 className="object-contain drop-shadow-[0_20px_50px_rgba(99,102,241,0.3)]"
                 style={{
-                  maskImage: "linear-gradient(to bottom, black 85%, transparent 100%)",
-                  WebkitMaskImage: "linear-gradient(to bottom, black 85%, transparent 100%)",
+                  maskImage: "linear-gradient(to bottom, black 60%, transparent 98%)",
+                  WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 98%)",
                 }}
               />
             </div>

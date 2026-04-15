@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Image from 'next/image';
-import { MouseEvent, useRef, useEffect, useState } from "react";
+import { MouseEvent, useRef, useState } from "react";
 import Magnetic from "./ui/Magnetic";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -16,7 +16,7 @@ const projects = [
     subtitle: "Govt Infrastructure",
     status: "Live",
     statusColor: "bg-green-500/20 text-green-400 border border-green-500/20",
-    year: "2024",
+    year: "2025",
     description: "Architected a high-concurrency CCTV monitoring system for the Haryana Government. Features low-latency RTSP-to-HLS transcoding and real-time motion forensics.",
     badges: [
       { name: "FFmpeg", color: "bg-indigo-500/15 text-indigo-300 border-indigo-500/20" },
@@ -33,7 +33,7 @@ const projects = [
     subtitle: "Enterprise SMS",
     status: "Live",
     statusColor: "bg-blue-500/20 text-blue-400 border border-blue-500/20",
-    year: "2023",
+    year: "2026",
     description: "A sophisticated educational ERP featuring multi-tenant architecture, automated reporting, and secure RBAC. Designed for seamless academic administration.",
     badges: [
       { name: "Vue.js 3", color: "bg-blue-500/15 text-blue-300 border-blue-500/20" },
@@ -98,44 +98,34 @@ function Card({ project }: { project: typeof projects[0] }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, perspective: 1000 }}
-      className={`project-card shrink-0 w-[85vw] md:w-[600px] h-[500px] md:h-[600px] relative glass-card rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br ${project.accentColor} flex flex-col p-8 md:p-12 transition-colors duration-300 hover:border-indigo-500/40`}
+      className={`project-card shrink-0 w-[70vw] md:w-[350px] h-[300px] md:h-[320px] relative glass-card rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br ${project.accentColor} flex flex-col p-5 md:p-6 transition-colors duration-300 hover:border-indigo-500/40`}
     >
-      <motion.div
-        className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100"
-        style={{
-          background: useTransform(
-            [mouseX, mouseY],
-            ([sx, sy]) => `radial-gradient(400px circle at ${sx}px ${sy}px, rgba(99, 102, 241, 0.15), transparent 80%)`
-          ),
-        }}
-      />
-
-      <div className="flex items-start justify-between mb-8 relative z-10">
-        <div className="flex items-center gap-6">
+      <div className="flex items-start justify-between mb-4 relative z-10">
+        <div className="flex items-center gap-3">
           <Magnetic>
-            <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center p-3.5 shadow-xl transition-transform">
-              <Image width={80} height={80} src={project.icon} alt={`${project.title} icon`} className="object-contain logo-glow" />
+            <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center p-2 shadow-xl transition-transform">
+              <Image width={40} height={40} src={project.icon} alt={`${project.title} icon`} className="object-contain logo-glow" />
             </div>
           </Magnetic>
           <div>
-            <h3 className="text-3xl font-black text-white font-[var(--font-poppins)] tracking-tight mb-1">
+            <h3 className="text-xl font-black text-white font-[var(--font-poppins)] tracking-tight mb-0.5">
               {project.title}
             </h3>
-            <span className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em]">{project.subtitle}</span>
+            <span className="text-[9px] font-bold text-gray-400 uppercase tracking-[0.2em]">{project.subtitle}</span>
           </div>
         </div>
-        <span className={`text-[10px] px-4 py-1.5 rounded-full font-black uppercase tracking-widest ${project.statusColor}`}>
+        <span className={`text-[8px] px-2 py-0.5 rounded-full font-black uppercase tracking-widest ${project.statusColor}`}>
           {project.status}
         </span>
       </div>
 
-      <p className="text-gray-300 text-lg leading-relaxed mb-8 font-medium relative z-10">
+      <p className="text-gray-400 text-xs leading-relaxed mb-4 font-medium relative z-10 line-clamp-3">
         {project.description}
       </p>
 
-      <div className="flex flex-wrap gap-3 mb-12 relative z-10">
+      <div className="flex flex-wrap gap-1.5 mb-6 relative z-10">
         {project.badges.map((badge) => (
-          <span key={badge.name} className={`text-[10px] px-4 py-2 rounded-xl border font-black uppercase tracking-widest ${badge.color}`}>
+          <span key={badge.name} className={`text-[8px] px-2 py-1 rounded-lg border font-black uppercase tracking-widest ${badge.color}`}>
             {badge.name}
           </span>
         ))}
@@ -187,7 +177,7 @@ export default function Projects() {
     });
 
     // Individual card focus animations
-    sections.forEach((section: any) => {
+    sections.forEach((section: Element) => {
       gsap.to(section, {
         opacity: 1,
         scale: 1.05,
@@ -211,7 +201,7 @@ export default function Projects() {
   return (
     <section id="projects" ref={triggerRef} className="relative z-10 overflow-hidden bg-black/50">
       {/* Ambient Glow Background */}
-      <motion.div 
+      <motion.div
         animate={{ opacity: progress > 0 && progress < 1 ? 1 : 0 }}
         className="absolute inset-0 pointer-events-none transition-opacity duration-1000"
       >
@@ -219,9 +209,9 @@ export default function Projects() {
         <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-purple-500/5 blur-[120px] rounded-full" />
       </motion.div>
 
-      <div className="min-h-screen flex flex-col justify-center py-24">
+      <div className="min-h-screen flex flex-col justify-center py-10 md:py-16">
         {/* Header */}
-        <div className="max-w-7xl mx-auto px-6 mb-16 md:mb-24 w-full">
+        <div className="max-w-7xl mx-auto px-6 mb-8 md:mb-12 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -230,7 +220,7 @@ export default function Projects() {
             className="text-left"
           >
             <span className="text-indigo-400 text-xs font-black uppercase tracking-[0.4em] mb-4 block">Archive 01</span>
-            <h2 className="text-4xl md:text-6xl lg:text-8xl font-black text-white mb-6 font-[var(--font-poppins)] tracking-tighter">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-white mb-6 font-[var(--font-poppins)] tracking-tighter">
               Digital <span className="gradient-text">Masterpieces</span>
             </h2>
           </motion.div>
@@ -238,16 +228,16 @@ export default function Projects() {
 
         {/* Horizontal Container */}
         <div className="overflow-x-auto md:overflow-visible pb-12 md:pb-0">
-          <div 
-            ref={containerRef} 
+          <div
+            ref={containerRef}
             className="flex flex-col md:flex-row gap-8 px-6 md:px-[10vw] w-max md:w-auto"
           >
-            {projects.map((project, i) => (
+            {projects.map((project) => (
               <Card key={project.title} project={project} />
             ))}
-            
+
             {/* View More Card */}
-            <div className="shrink-0 w-[85vw] md:w-[400px] h-[500px] md:h-[600px] flex items-center justify-center">
+            <div className="shrink-0 w-[70vw] md:w-[280px] h-[300px] md:h-[320px] flex items-center justify-center">
               <Magnetic>
                 <a
                   href="https://github.com/CodeByAmrit"
@@ -266,7 +256,7 @@ export default function Projects() {
 
         {/* Progress Bar (Desktop Only) */}
         <div className="hidden md:block absolute bottom-12 left-1/2 -translate-x-1/2 w-[40vw] h-px bg-white/10 overflow-hidden">
-          <motion.div 
+          <motion.div
             className="h-full bg-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.5)]"
             style={{ width: `${progress * 100}%` }}
           />
