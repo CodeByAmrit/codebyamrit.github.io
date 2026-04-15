@@ -16,39 +16,67 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Amrit Sharma | Full Stack Developer",
+  title: {
+    default: "Amrit Sharma — Senior Full Stack Developer & Software Architect",
+    template: "%s | Amrit Sharma",
+  },
   description:
-    "Amrit Sharma is a passionate Full Stack Developer specializing in building scalable web applications with modern technologies like React, Next.js, Node.js, and more. Explore my portfolio and projects.",
+    "Amrit Sharma is a results-driven Senior Full Stack Developer specializing in high-performance web applications, cloud architecture, and AI-driven solutions. Expert in Next.js, React, Node.js, and scaling technical infrastructure.",
   keywords: [
     "Amrit Sharma",
-    "Full Stack Developer",
-    "Web Developer",
-    "React",
-    "Next.js",
-    "Node.js",
-    "Portfolio",
-    "AI ML Developer",
+    "Senior Full Stack Developer",
+    "Software Engineer Sonipat",
+    "Web Development Expert India",
+    "Next.js Developer India",
+    "MERN Stack Architect",
+    "React 19 Specialist",
+    "Cloud Computing Solutions",
+    "AI/ML Integration Expert",
+    "Portfolio of Amrit Sharma",
+    "Top Web Developers in Haryana",
   ],
   authors: [{ name: "Amrit Sharma", url: "https://amritsharma.dev" }],
   creator: "Amrit Sharma",
   metadataBase: new URL("https://amritsharma.dev"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Amrit Sharma — Full Stack Developer",
+    title: "Amrit Sharma — Senior Full Stack Developer & Software Architect",
     description:
-      "Passionate developer building fast, responsive, and user-friendly web experiences.",
+      "Passionate developer building high-performance, secure, and intuitive web experiences using modern technical stacks.",
     url: "https://amritsharma.dev",
-    siteName: "Amrit Sharma",
-    images: [{ url: "/images/logoMain.png", width: 512, height: 512 }],
+    siteName: "Amrit Sharma Portfolio",
+    images: [
+      {
+        url: "/amritnew.png",
+        width: 1200,
+        height: 630,
+        alt: "Amrit Sharma — Software Development Specialist",
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Amrit Sharma — Full Stack Developer",
-    description: "Passionate developer building fast, responsive web experiences.",
-    images: ["/images/logoMain.png"],
+    title: "Amrit Sharma | Full Stack developer",
+    description:
+      "Expert Full Stack developer crafting scalable cloud-native web solutions.",
+    images: ["/amritnew.png"],
+    creator: "@warrior_amrit",
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -70,6 +98,39 @@ export default function RootLayout({
               gtag('js', new Date());
               gtag('config', 'G-LCCK7P9XQM');
             `,
+          }}
+        />
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Amrit Sharma",
+              "url": "https://amritsharma.dev",
+              "image": "https://amritsharma.dev/amritnew.png",
+              "sameAs": [
+                "https://github.com/CodeByAmrit",
+                "https://www.linkedin.com/in/amrit-sharma-b11b88124",
+                "https://www.instagram.com/warrior_amrit"
+              ],
+              "jobTitle": "Senior Full Stack Developer",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Freelance / Self-Employed"
+              },
+              "description": "Amrit Sharma is a Senior Full Stack Developer specializing in high-performance web applications and cloud architecture.",
+              "knowsAbout": [
+                "Web Development",
+                "React",
+                "Next.js",
+                "Node.js",
+                "Cloud Architecture",
+                "AI/ML",
+                "UI/UX Design"
+              ]
+            }),
           }}
         />
       </head>

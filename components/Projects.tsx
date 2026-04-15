@@ -110,7 +110,13 @@ export default function Projects() {
                     <div
                       className={`w-11 h-11 rounded-xl ${project.iconBg} flex items-center justify-center text-xl`}
                     >
-                      <Image width={50} height={50} src={project.icon} alt={project.title} />
+                      <Image 
+                        width={50} 
+                        height={50} 
+                        src={project.icon} 
+                        alt={`${project.title} logo — ${project.subtitle}`} 
+                        className="object-contain"
+                      />
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-white font-[var(--font-poppins)]">
@@ -148,6 +154,7 @@ export default function Projects() {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`View live demo of ${project.title}`}
                       className="flex items-center gap-1 text-sm text-gray-300 hover:text-white transition-colors font-medium group/link"
                     >
                       Live Demo
@@ -157,6 +164,7 @@ export default function Projects() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`View ${project.title} source code on GitHub`}
                       className="flex items-center gap-1 text-sm text-gray-300 hover:text-white transition-colors font-medium group/link"
                     >
                       <Github className="w-3.5 h-3.5" />
