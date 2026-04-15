@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import Magnetic from "./ui/Magnetic";
 
 const navLinks = [
-  { href: "#about", label: "About" },
+  { href: "#home", label: "Home" },
   { href: "#technologies", label: "Skills" },
   { href: "#projects", label: "Projects" },
-  { href: "#testimonials", label: "Testimonials" },
+  { href: "#experience", label: "Expertise" },
 ];
 
 export default function Navbar() {
@@ -17,14 +18,12 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  // Track scroll for glass effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Active section highlighting via IntersectionObserver
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
     const observer = new IntersectionObserver(
@@ -41,133 +40,122 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
-  // Close mobile menu on link click
-  const handleNavClick = () => setMobileOpen(false);
-
   return (
     <motion.header
-      initial={{ y: -80, opacity: 0 }}
+      initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass border-b border-white/10 shadow-xl shadow-black/20" : ""
+      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? "py-3" : "py-6"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 group-hover:scale-110 transition-transform duration-300">
-            <Image
-              src="/logo.svg"
-              alt="Logo"
-              fill
-              className="object-contain logo-glow"
-            />
-          </div>
-          <span className="text-white font-semibold text-lg tracking-tight group-hover:text-indigo-300 transition-colors duration-300">
-            Amrit Sharma
-          </span>
-        </Link>
+      <div className="max-w-7xl mx-auto px-6">
+        <div className={`flex items-center justify-between px-6 py-3 rounded-2xl transition-all duration-500 border ${
+          scrolled 
+            ? "glass border-white/10 shadow-2xl shadow-black/40" 
+            : "bg-transparent border-transparent"
+        }`}>
+          {/* Logo */}
+          <Magnetic>
+            <Link href="/" className="flex items-center gap-3 group relative z-10">
+              <div className="relative w-10 h-10 transition-transform duration-500 group-hover:scale-110">
+                <Image src="/logo.svg" alt="Logo" fill className="object-contain logo-glow" />
+              </div>
+              <span className="text-white font-black text-xl tracking-tighter hidden sm:block">
+                AMRIT<span className="text-indigo-400">.</span>
+              </span>
+            </Link>
+          </Magnetic>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`text-sm font-medium transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-indigo-400 after:transition-all after:duration-300 hover:after:w-full ${
-                activeSection === link.href.slice(1)
-                  ? "text-indigo-400 after:w-full"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
-        {/* CTA */}
-        <div className="hidden md:flex items-center gap-4">
-          <a
-            href="/profile.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold glass border border-white/10 text-gray-200 hover:text-white hover:border-indigo-500/30 transition-all duration-300"
-          >
-            <i className="fi fi-rr-file-user text-xs" />
-            <span>My Resume</span>
-          </a>
-          <a
-            href="https://wa.me/919817044885"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 btn-gradient px-5 py-2.5 rounded-xl text-sm font-semibold shadow-lg shadow-indigo-500/25"
-          >
-            <span>Let&apos;s Connect</span>
-            <i className="fi fi-rr-arrow-right text-[10px] relative z-10" />
-          </a>
-        </div>
-
-        {/* Hamburger */}
-        <button
-          id="mobile-menu-btn"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
-          aria-label="Toggle mobile menu"
-        >
-          {mobileOpen ? (
-            <i className="fi fi-rr-cross text-sm flex items-center justify-center w-5 h-5" />
-          ) : (
-            <i className="fi fi-rr-menu-burger text-base flex items-center justify-center w-5 h-5" />
-          )}
-        </button>
-      </div>
-
-      {/* Mobile Drawer */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            key="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden overflow-hidden glass border-t border-white/10"
-          >
-            <div className="px-6 py-4 flex flex-col gap-4">
-              {navLinks.map((link) => (
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-2 bg-white/5 rounded-full p-1 border border-white/5">
+            {navLinks.map((link) => (
+              <Magnetic key={link.href}>
                 <a
-                  key={link.href}
                   href={link.href}
-                  onClick={handleNavClick}
-                  className={`text-sm font-medium py-2 transition-colors duration-200 ${
+                  className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 relative ${
                     activeSection === link.href.slice(1)
-                      ? "text-indigo-400"
-                      : "text-gray-300 hover:text-white"
+                      ? "text-white bg-white/10"
+                      : "text-gray-400 hover:text-white"
                   }`}
                 >
                   {link.label}
                 </a>
-              ))}
+              </Magnetic>
+            ))}
+          </nav>
+
+          {/* Desktop CTAs */}
+          <div className="hidden md:flex items-center gap-4">
+            <Magnetic>
               <a
                 href="/profile.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={handleNavClick}
-                className="glass text-center px-5 py-3 rounded-xl text-sm font-semibold mt-2 text-gray-200 border border-white/10"
+                className="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors px-4 py-2"
               >
-                <i className="fi fi-rr-file-user mr-2 text-xs" />
-                <span>My Resume</span>
+                Resume
               </a>
+            </Magnetic>
+            <Magnetic>
               <a
                 href="https://wa.me/919817044885"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={handleNavClick}
-                className="btn-gradient text-center px-5 py-3 rounded-xl text-sm font-semibold"
+                className="btn-gradient px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest shadow-xl shadow-indigo-500/20"
               >
-                <span>Let&apos;s Connect</span>
+                Connect
               </a>
+            </Magnetic>
+          </div>
+
+          {/* Mobile Menu Btn */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden w-10 h-10 rounded-xl glass border border-white/10 flex items-center justify-center text-white"
+          >
+            <i className={`fi ${mobileOpen ? "fi-rr-cross" : "fi-rr-menu-burger"} text-sm`} />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="absolute top-full left-6 right-6 mt-4 md:hidden"
+          >
+            <div className="glass rounded-[2rem] border border-white/10 p-8 shadow-2xl">
+              <div className="flex flex-col gap-6">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="text-2xl font-black text-white hover:text-indigo-400 transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+                <div className="h-px bg-white/10 my-4" />
+                <a
+                  href="/profile.html"
+                  onClick={() => setMobileOpen(false)}
+                  className="text-lg font-bold text-gray-400 hover:text-white"
+                >
+                  View Full Resume
+                </a>
+                <a
+                  href="https://wa.me/919817044885"
+                  onClick={() => setMobileOpen(false)}
+                  className="btn-gradient text-center py-4 rounded-2xl text-xs font-black uppercase tracking-widest"
+                >
+                  Let&apos;s Talk
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
@@ -175,3 +163,4 @@ export default function Navbar() {
     </motion.header>
   );
 }
+

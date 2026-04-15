@@ -1,156 +1,114 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
+import { MouseEvent } from "react";
+import Magnetic from "./ui/Magnetic";
 
 const timeline = [
   {
     period: "2023 – 2026",
-    title: "B.Tech in AI & ML",
-    institution: "Maharshi Dayanand University, Rohtak",
+    title: "B.Tech AI & ML",
+    institution: "MDU Rohtak",
     iconClass: "fi fi-rr-graduation-cap",
   },
   {
     period: "2021 – 2023",
-    title: "Diploma in Computer Engineering",
-    institution: "Government Polytechnic, Sonipat",
+    title: "Diploma CS Eng",
+    institution: "GP Sonipat",
     iconClass: "fi fi-rr-document",
-  },
-  {
-    period: "2018 – 2021",
-    title: "Secondary & Sr. Secondary",
-    institution: "Rishikul Vidyapeeth, Sonipat",
-    iconClass: "fi fi-rr-school",
   },
 ];
 
-const contactInfo = [
-  { iconClass: "fi fi-rr-marker", label: "Location", value: "Sonipat, Haryana, India" },
-  {
-    iconClass: "fi fi-rr-envelope",
-    label: "Email",
-    value: "amritsharma2617@gmail.com",
-    href: "mailto:amritsharma2617@gmail.com",
-  },
-  { iconClass: "fi fi-rr-clock", label: "Availability", value: "Open to freelance & full-time" },
-];
+function Card({ children, className, span }: { children: React.ReactNode, className?: string, span?: string }) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  return (
+    <motion.div
+      onMouseMove={handleMouseMove}
+      className={`group relative overflow-hidden rounded-[2rem] border border-white/5 bg-gradient-to-br from-white/5 to-transparent p-8 md:p-10 ${span} ${className}`}
+    >
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-[2rem] opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: useTransform(
+            [mouseX, mouseY],
+            ([x, y]) => `radial-gradient(400px circle at ${x}px ${y}px, rgba(99, 102, 241, 0.1), transparent 80%)`
+          ),
+        }}
+      />
+      {children}
+    </motion.div>
+  );
+}
 
 export default function About() {
   return (
-    <section id="about" className="section-pad relative z-10">
+    <section id="about" className="section-pad relative z-10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 font-[var(--font-poppins)]">
-            About <span className="gradient-text">Me</span>
-          </h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
-            My journey, background, and what drives me to build great software.
-          </p>
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 auto-rows-[minmax(200px,auto)]">
+          {/* Main Bio Card */}
+          <Card span="md:col-span-8 md:row-span-2 flex flex-col justify-center">
+            <span className="text-xs font-bold tracking-[0.3em] text-indigo-400 uppercase mb-6 block">Biography</span>
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-white mb-8 font-[var(--font-poppins)] tracking-tighter">
+              The Mind <span className="gradient-text">Behind</span> The Machines
+            </h2>
+            <p className="text-gray-400 text-lg md:text-xl leading-relaxed mb-6 font-medium">
+              A visionary full-stack architect specializing in the intersection of Artificial Intelligence and modern web infrastructure. I bridge the gap between creative concepts and high-performance engineering.
+            </p>
+            <p className="text-gray-500 leading-relaxed max-w-2xl">
+              Currently engineering advanced solutions while mastering AI dynamics. My philosophy is rooted in architectural purity and user-centric innovation.
+            </p>
+          </Card>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* ── Left: Bio + Contact ── */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-          >
-            <div className="glass-card rounded-2xl p-8 mb-6">
-              <span className="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-3 block">
-                My Journey
-              </span>
-              <h3 className="text-2xl font-bold text-white mb-4 font-[var(--font-poppins)]">
-                Turning Ideas into Digital Reality
-              </h3>
-              <p className="text-gray-300 leading-relaxed mb-4">
-                I&apos;m a passionate full-stack developer currently pursuing B.Tech in AI &amp; ML
-                at Maharshi Dayanand University. I started coding during my diploma and quickly fell
-                in love with building real-world solutions.
-              </p>
-              <p className="text-gray-400 leading-relaxed">
-                I specialise in building everything from sleek, responsive frontends to robust,
-                scalable backends. My focus is always on writing clean, maintainable code that
-                solves real problems.
-              </p>
-            </div>
-
-            {/* Contact Info */}
-            <div className="glass-card rounded-2xl p-6 space-y-4">
-              {contactInfo.map((item) => {
-                return (
-                  <div key={item.label} className="flex items-start gap-4">
-                    <div className="w-9 h-9 rounded-lg bg-indigo-500/10 flex items-center justify-center shrink-0">
-                      <i className={`${item.iconClass} text-xs text-indigo-400`} />
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-500 mb-0.5">{item.label}</p>
-                      {item.href ? (
-                        <a
-                          href={item.href}
-                          className="text-gray-200 hover:text-indigo-400 transition-colors text-sm"
-                        >
-                          {item.value}
-                        </a>
-                      ) : (
-                        <p className="text-gray-200 text-sm">{item.value}</p>
-                      )}
-                    </div>
+          {/* Contact Quick Links */}
+          <Card span="md:col-span-4 md:row-span-1 border-indigo-500/20 bg-indigo-500/5">
+            <h3 className="text-xl font-black text-white mb-6 uppercase tracking-widest">Connect</h3>
+            <div className="space-y-4">
+              <a href="mailto:amritsharma2617@gmail.com" className="flex items-center gap-4 group/link">
+                <Magnetic>
+                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center transition-colors group-hover/link:bg-indigo-500/20">
+                    <i className="fi fi-rr-envelope text-indigo-400" />
                   </div>
-                );
-              })}
+                </Magnetic>
+                <span className="text-sm font-bold text-gray-300 group-hover/link:text-white transition-colors">Email Me</span>
+              </a>
+              <a href="https://wa.me/919817044885" className="flex items-center gap-4 group/link">
+                <Magnetic>
+                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center transition-colors group-hover/link:bg-green-500/20">
+                    <i className="fi fi-brands-whatsapp text-green-400" />
+                  </div>
+                </Magnetic>
+                <span className="text-sm font-bold text-gray-300 group-hover/link:text-white transition-colors">WhatsApp</span>
+              </a>
             </div>
-          </motion.div>
+          </Card>
 
-          {/* ── Right: Timeline ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            viewport={{ once: true }}
-          >
-            <div className="glass-card rounded-2xl p-8">
-              <div className="flex items-center gap-3 mb-8">
-                <i className="fi fi-rr-graduation-cap text-indigo-400" />
-                <h3 className="text-xl font-bold text-white font-[var(--font-poppins)]">
-                  Academic Journey
-                </h3>
-              </div>
-
-              <div className="relative pl-8 border-l-2 border-indigo-500/20 space-y-8">
-                {timeline.map((item, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: i * 0.15 }}
-                    viewport={{ once: true }}
-                    className="relative"
-                  >
-                    {/* Dot */}
-                    <div className="timeline-dot animate-pulse" />
-
-                    <time className="text-xs font-medium text-indigo-400 tracking-wide">
-                      {item.period}
-                    </time>
-                    <h4 className="text-base font-semibold text-white mt-1 mb-0.5">
-                      <i className={`${item.iconClass} mr-2 text-sm`} />
-                      {item.title}
-                    </h4>
-                    <p className="text-gray-400 text-sm">{item.institution}</p>
-                  </motion.div>
-                ))}
-              </div>
+          {/* Academic Journey Card */}
+          <Card span="md:col-span-4 md:row-span-1">
+            <h3 className="text-xl font-black text-white mb-6 uppercase tracking-widest">Education</h3>
+            <div className="space-y-6">
+              {timeline.map((item, i) => (
+                <div key={i} className="flex gap-4">
+                  <div className="w-1 bg-indigo-500/20 rounded-full" />
+                  <div>
+                    <p className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">{item.period}</p>
+                    <h4 className="text-sm font-black text-white">{item.title}</h4>
+                    <p className="text-xs text-gray-500">{item.institution}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          </motion.div>
+          </Card>
         </div>
       </div>
     </section>
   );
 }
+

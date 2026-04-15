@@ -1,84 +1,58 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-const stats = [
-  {
-    iconClass: "fi fi-rr-rocket-lunch",
-    value: 2,
-    suffix: "+",
-    label: "Years Experience",
-    color: "text-indigo-400",
-    bg: "bg-indigo-500/10",
-    border: "border-indigo-500/20",
-  },
-  {
-    iconClass: "fi fi-rr-code-simple",
-    value: 15,
-    suffix: "+",
-    label: "Projects Completed",
-    color: "text-purple-400",
-    bg: "bg-purple-500/10",
-    border: "border-purple-500/20",
-  },
-  {
-    iconClass: "fi fi-rr-star",
-    value: 10,
-    suffix: "+",
-    label: "Happy Clients",
-    color: "text-pink-400",
-    bg: "bg-pink-500/10",
-    border: "border-pink-500/20",
-  },
-  {
-    iconClass: "fi fi-rr-shield-check",
-    value: 100,
-    suffix: "%",
-    label: "Commitment",
-    color: "text-cyan-400",
-    bg: "bg-cyan-500/10",
-    border: "border-cyan-500/20",
-  },
-];
+import { useEffect, useRef, useState, MouseEvent } from "react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
+import Magnetic from "./ui/Magnetic";
 
-function CountUp({
-  target,
-  suffix,
-  trigger,
-}: {
-  target: number;
-  suffix: string;
-  trigger: boolean;
-}) {
-  const [count, setCount] = useState(0);
-  const rafRef = useRef<number>(0);
+function SpotlightCard({ children, className, span }: { children: React.ReactNode, className?: string, span: string }) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  useEffect(() => {
-    if (!trigger) return;
-    const start = Date.now();
-    const duration = 2000;
-
-    const animate = () => {
-      const elapsed = Date.now() - start;
-      const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.round(eased * target));
-      if (progress < 1) {
-        rafRef.current = requestAnimationFrame(animate);
-      }
-    };
-
-    rafRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [trigger, target]);
+  function onMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
 
   return (
-    <span>
-      {count}
-      {suffix}
-    </span>
+    <motion.div
+      onMouseMove={onMouseMove}
+      className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-8 ${span} ${className}`}
+    >
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: useTransform(
+            [mouseX, mouseY],
+            ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(99, 102, 241, 0.1), transparent 40%)`
+          ),
+        }}
+      />
+      {children}
+    </motion.div>
   );
+}
+
+function CountUp({ target, suffix, trigger }: { target: number; suffix: string; trigger: boolean }) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!trigger) return;
+    let start = 0;
+    const end = target;
+    const duration = 2000;
+    const increment = end / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [trigger, target]);
+  return <span>{count}{suffix}</span>;
 }
 
 export default function Stats() {
@@ -86,49 +60,67 @@ export default function Stats() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTriggered(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(el);
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setTriggered(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.1 });
+    if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={ref} className="py-12 relative z-10">
+    <section ref={ref} className="section-pad relative z-10">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-          {stats.map((stat, i) => {
-            return (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-                viewport={{ once: true, amount: 0.3 }}
-                className={`glass-card rounded-2xl p-6 text-center ${stat.border}`}
-              >
-                <div
-                  className={`w-12 h-12 rounded-xl ${stat.bg} flex items-center justify-center mx-auto mb-4`}
-                >
-                  <i className={`${stat.iconClass} text-xl ${stat.color}`}></i>
-                </div>
-                <div className={`text-3xl font-bold ${stat.color} mb-1 font-[var(--font-poppins)]`}>
-                  <CountUp target={stat.value} suffix={stat.suffix} trigger={triggered} />
-                </div>
-                <p className="text-gray-400 text-sm">{stat.label}</p>
-              </motion.div>
-            );
-          })}
+        <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 auto-rows-[180px]">
+          {/* Main Stat 1 */}
+          <SpotlightCard span="md:col-span-2 md:row-span-2 flex flex-col justify-center items-center text-center">
+            <Magnetic>
+              <div className="w-20 h-20 rounded-2xl bg-indigo-500/10 flex items-center justify-center mb-6">
+                <i className="fi fi-rr-rocket-lunch text-4xl text-indigo-400"></i>
+              </div>
+            </Magnetic>
+            <h3 className="text-6xl font-bold text-white mb-2 font-[var(--font-poppins)]">
+              <CountUp target={2} suffix="+" trigger={triggered} />
+            </h3>
+            <p className="text-gray-400 text-lg">Years of Experience</p>
+          </SpotlightCard>
+
+          {/* Stat 2 */}
+          <SpotlightCard span="md:col-span-2 md:row-span-1 flex items-center justify-between p-10">
+            <div>
+              <h3 className="text-5xl font-bold text-purple-400 mb-1 font-[var(--font-poppins)]">
+                <CountUp target={15} suffix="+" trigger={triggered} />
+              </h3>
+              <p className="text-gray-400">Projects Completed</p>
+            </div>
+            <Magnetic>
+              <div className="w-16 h-16 rounded-2xl bg-purple-500/10 flex items-center justify-center">
+                <i className="fi fi-rr-code-simple text-3xl text-purple-400"></i>
+              </div>
+            </Magnetic>
+          </SpotlightCard>
+
+          {/* Stat 3 */}
+          <SpotlightCard span="md:col-span-1 md:row-span-1 flex flex-col justify-center">
+            <div className="text-3xl font-bold text-pink-400 font-[var(--font-poppins)]">
+              <CountUp target={10} suffix="+" trigger={triggered} />
+            </div>
+            <p className="text-gray-400 text-sm mt-1">Happy Clients</p>
+          </SpotlightCard>
+
+          {/* Status Badge Card */}
+          <SpotlightCard span="md:col-span-1 md:row-span-1 flex flex-col justify-center border-indigo-500/20 bg-indigo-500/5">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              <span className="text-xs font-bold text-green-400 uppercase tracking-widest">Available</span>
+            </div>
+            <p className="text-white font-bold text-sm">For new projects</p>
+          </SpotlightCard>
         </div>
       </div>
     </section>
   );
 }
+

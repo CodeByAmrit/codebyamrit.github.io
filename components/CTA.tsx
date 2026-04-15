@@ -1,61 +1,88 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
+import { MouseEvent } from "react";
+import Magnetic from "./ui/Magnetic";
 
 export default function CTA() {
-  return (
-    <section className="section-pad relative z-10">
-      <div className="max-w-5xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="relative rounded-3xl overflow-hidden"
-        >
-          {/* Background gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-purple-600/15 to-pink-600/10" />
-          <div className="absolute inset-0 border border-white/10 rounded-3xl" />
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-          {/* Glow blobs */}
-          <div className="absolute -top-20 -left-20 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl" />
-          <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl" />
+  function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  return (
+    <section className="section-pad relative z-10 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, y: 30 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          onMouseMove={handleMouseMove}
+          className="group relative rounded-[3rem] border border-white/5 bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent p-12 md:p-24 overflow-hidden border-indigo-500/20 shadow-2xl"
+        >
+          {/* Spotlight Effect */}
+          <motion.div
+            className="pointer-events-none absolute -inset-px rounded-[3rem] opacity-0 transition duration-300 group-hover:opacity-100"
+            style={{
+              background: useTransform(
+                [mouseX, mouseY],
+                ([x, y]) => `radial-gradient(800px circle at ${x}px ${y}px, rgba(99, 102, 241, 0.15), transparent 80%)`
+              ),
+            }}
+          />
+
+          {/* Background Dynamics */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] -mr-48 -mt-48 animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] -ml-48 -mb-48 animate-pulse" />
 
           {/* Content */}
-          <div className="relative z-10 text-center py-16 px-8 md:py-20 md:px-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-6">
-              <i className="fi fi-rr-sparkles text-xs" />
-              Open for Opportunities
-            </div>
+          <div className="relative z-10 text-center">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-indigo-400 text-xs font-black uppercase tracking-[0.3em] mb-12 shadow-xl"
+            >
+              <i className="fi fi-rr-sparkles text-[10px]" />
+              Status: Available for High-Grade Projects
+            </motion.div>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 font-[var(--font-poppins)]">
-              Ready to Build{" "}
-              <span className="gradient-text">Something Amazing?</span>
+            <h2 className="text-4xl md:text-6xl lg:text-8xl font-black text-white mb-10 leading-[0.9] font-[var(--font-poppins)] tracking-tighter">
+              Ready to architect <br />
+              <span className="gradient-text">the future?</span>
             </h2>
 
-            <p className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-              Whether you need a custom web application, system integration, or technical
-              consultation — I&apos;m here to help bring your ideas to life with clean code and
-              great design.
+            <p className="text-gray-400 text-lg md:text-2xl max-w-3xl mx-auto mb-16 leading-relaxed font-medium">
+              Bridging the gap between ambitious business goals and elite technical execution. Let&apos;s build something that survives the test of time.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://wa.me/919817044885"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-gradient flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-semibold shadow-xl shadow-indigo-500/25 text-sm"
-              >
-                <i className="fi fi-brands-whatsapp text-base relative z-10" />
-                <span>Discuss Project</span>
-              </a>
-              <a
-                href="mailto:amritsharma2617@gmail.com"
-                className="flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl glass border border-white/10 text-gray-200 hover:text-white hover:border-indigo-400/30 transition-all duration-300 font-semibold text-sm hover:shadow-lg hover:shadow-indigo-500/10"
-              >
-                <i className="fi fi-rr-envelope text-base" />
-                Email Me
-              </a>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Magnetic>
+                <a
+                  href="https://wa.me/919817044885"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-gradient min-w-[240px] flex items-center justify-center gap-3 px-10 py-5 rounded-2xl font-black uppercase tracking-widest shadow-2xl shadow-indigo-500/40 text-xs transition-transform active:scale-95"
+                >
+                  <i className="fi fi-brands-whatsapp text-lg relative z-10" />
+                  <span>Start a Conversation</span>
+                </a>
+              </Magnetic>
+              
+              <Magnetic>
+                <a
+                  href="mailto:amritsharma2617@gmail.com"
+                  className="glass min-w-[240px] flex items-center justify-center gap-3 px-10 py-5 rounded-2xl border border-white/10 text-white font-black uppercase tracking-widest text-xs hover:bg-white/10 transition-all active:scale-95"
+                >
+                  <i className="fi fi-rr-envelope text-lg" />
+                  Email Infrastructure
+                </a>
+              </Magnetic>
             </div>
           </div>
         </motion.div>
@@ -63,3 +90,4 @@ export default function CTA() {
     </section>
   );
 }
+

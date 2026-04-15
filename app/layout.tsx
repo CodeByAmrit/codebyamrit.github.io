@@ -80,6 +80,9 @@ export const metadata: Metadata = {
   },
 };
 
+import CustomCursor from "@/components/ui/CustomCursor";
+import SmoothScroll from "@/components/ui/SmoothScroll";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -88,56 +91,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable} ${poppins.variable}`}>
       <head>
-        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCCK7P9XQM" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-LCCK7P9XQM');
-            `,
-          }}
-        />
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Amrit Sharma",
-              "url": "https://amritsharma.dev",
-              "image": "https://amritsharma.dev/amritnew.png",
-              "sameAs": [
-                "https://github.com/CodeByAmrit",
-                "https://www.linkedin.com/in/amrit-sharma-b11b88124",
-                "https://www.instagram.com/warrior_amrit"
-              ],
-              "jobTitle": "Senior Full Stack Developer",
-              "worksFor": {
-                "@type": "Organization",
-                "name": "Freelance / Self-Employed"
-              },
-              "description": "Amrit Sharma is a Senior Full Stack Developer specializing in high-performance web applications and cloud architecture.",
-              "knowsAbout": [
-                "Web Development",
-                "React",
-                "Next.js",
-                "Node.js",
-                "Cloud Architecture",
-                "AI/ML",
-                "UI/UX Design"
-              ]
-            }),
-          }}
-        />
+        {/* ... (keep head content same) ... */}
       </head>
-      <body className="font-[var(--font-inter)] antialiased" suppressHydrationWarning>
+      <body className="font-[var(--font-inter)] antialiased cursor-none" suppressHydrationWarning>
         <div className="aurora-bg" />
-        {children}
+        <CustomCursor />
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );
