@@ -1,38 +1,36 @@
 {
-  "name": "codebyamrit.github.io",
-  "version": "1.0.0",
-  "description": "[![Alt text](./images/banner.png)](https://github.com/codebyamrit)",
-  "homepage": "https://github.com/CodeByAmrit/codebyamrit.github.io#readme",
-  "bugs": {
-    "url": "https://github.com/CodeByAmrit/codebyamrit.github.io/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CodeByAmrit/codebyamrit.github.io.git"
-  },
-  "license": "ISC",
-  "author": "Amrit",
-  "type": "commonjs",
-  "main": "tailwind.config.js",
+  "name": "nextapp",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "prepare": "husky install",
-    "build:css": "npx @tailwindcss/cli -i ./src/input.css -o ./css/styles.css --watch",
-    "build": "npx @tailwindcss/cli -i ./src/input.css -o ./css/styles.css --minify",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.17"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,css,scss,md,html,json,svg}": [
-      "prettier --check"
-    ]
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.8.0",
+    "next": "16.2.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
-    "prettier": "^3.7.4",
-    "tailwindcss": "^4.1.17"
-  }
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.3",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "ignoreScripts": [
+    "sharp",
+    "unrs-resolver"
+  ],
+  "trustedDependencies": [
+    "sharp",
+    "unrs-resolver"
+  ]
 }

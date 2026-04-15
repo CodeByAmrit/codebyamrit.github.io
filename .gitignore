@@ -1,4 +1,22 @@
-# Node.js
+# Node / Bun
 node_modules/
+bun.lockb
 
+# Next.js build output
+.next/
+out/
+
+# Env files
+.env
+.env*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
+
+# Misc
 .hintrc
