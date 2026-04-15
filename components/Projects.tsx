@@ -2,8 +2,13 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Image from 'next/image';
-import { MouseEvent } from "react";
+import { MouseEvent, useRef, useEffect, useState } from "react";
 import Magnetic from "./ui/Magnetic";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -59,10 +64,9 @@ const projects = [
   },
 ];
 
-function Card({ project, index }: { project: typeof projects[0], index: number }) {
+function Card({ project }: { project: typeof projects[0] }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -76,14 +80,10 @@ function Card({ project, index }: { project: typeof projects[0], index: number }
   function handleMouseMove(event: MouseEvent) {
     const { currentTarget, clientX, clientY } = event;
     const { left, top, width, height } = currentTarget.getBoundingClientRect();
-    
-    // For tilt
     const centerX = left + width / 2;
     const centerY = top + height / 2;
     x.set(clientX - centerX);
     y.set(clientY - centerY);
-
-    // For spotlight
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
   }
@@ -95,16 +95,11 @@ function Card({ project, index }: { project: typeof projects[0], index: number }
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      viewport={{ once: true }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, perspective: 1000 }}
-      className={`group relative glass-card rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br ${project.accentColor} flex flex-col p-8 transition-colors duration-300 hover:border-indigo-500/40`}
+      className={`project-card shrink-0 w-[85vw] md:w-[600px] h-[500px] md:h-[600px] relative glass-card rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br ${project.accentColor} flex flex-col p-8 md:p-12 transition-colors duration-300 hover:border-indigo-500/40`}
     >
-      {/* Dynamic Cursor Light (Spotlight) */}
       <motion.div
         className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
@@ -115,128 +110,175 @@ function Card({ project, index }: { project: typeof projects[0], index: number }
         }}
       />
 
-      {/* Card Header */}
-      <div className="flex items-start justify-between mb-6 relative z-10">
-        <div className="flex items-center gap-4">
+      <div className="flex items-start justify-between mb-8 relative z-10">
+        <div className="flex items-center gap-6">
           <Magnetic>
-            <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center p-2.5 shadow-xl transition-transform">
-              <Image 
-                width={60} 
-                height={60} 
-                src={project.icon} 
-                alt={`${project.title} icon`} 
-                className="object-contain logo-glow"
-              />
+            <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center p-3.5 shadow-xl transition-transform">
+              <Image width={80} height={80} src={project.icon} alt={`${project.title} icon`} className="object-contain logo-glow" />
             </div>
           </Magnetic>
           <div>
-            <h3 className="text-xl font-black text-white font-[var(--font-poppins)] tracking-tight">
+            <h3 className="text-3xl font-black text-white font-[var(--font-poppins)] tracking-tight mb-1">
               {project.title}
             </h3>
-            <span className="text-xs font-medium text-gray-400 uppercase tracking-widest">{project.subtitle}</span>
+            <span className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em]">{project.subtitle}</span>
           </div>
         </div>
-        <span className={`text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-tighter ${project.statusColor}`}>
+        <span className={`text-[10px] px-4 py-1.5 rounded-full font-black uppercase tracking-widest ${project.statusColor}`}>
           {project.status}
         </span>
       </div>
 
-      {/* Description */}
-      <p className="text-gray-300 text-sm leading-relaxed mb-6 font-medium relative z-10">
+      <p className="text-gray-300 text-lg leading-relaxed mb-8 font-medium relative z-10">
         {project.description}
       </p>
 
-      {/* Tech Badges */}
-      <div className="flex flex-wrap gap-2 mb-8 relative z-10">
+      <div className="flex flex-wrap gap-3 mb-12 relative z-10">
         {project.badges.map((badge) => (
-          <span
-            key={badge.name}
-            className={`text-[10px] px-3 py-1.5 rounded-xl border font-bold uppercase tracking-widest ${badge.color}`}
-          >
+          <span key={badge.name} className={`text-[10px] px-4 py-2 rounded-xl border font-black uppercase tracking-widest ${badge.color}`}>
             {badge.name}
           </span>
         ))}
       </div>
 
-      {/* Footer */}
-      <div className="flex items-center justify-between mt-auto pt-6 border-t border-white/5 relative z-10">
-        <div className="flex gap-6">
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-xs text-white/60 hover:text-white transition-colors font-bold uppercase tracking-widest group/link"
-          >
+      <div className="flex items-center justify-between mt-auto pt-8 border-t border-white/5 relative z-10">
+        <div className="flex gap-8">
+          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-white/60 hover:text-white transition-colors font-black uppercase tracking-[0.2em] group/link">
             Live Demo
             <i className="fi fi-rr-arrow-up-right text-[10px] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
           </a>
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-xs text-white/60 hover:text-white transition-colors font-bold uppercase tracking-widest group/link"
-          >
-            <i className="fi fi-brands-github text-xs" />
-            Code base
+          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-white/60 hover:text-white transition-colors font-black uppercase tracking-[0.2em] group/link">
+            <i className="fi fi-brands-github text-base" />
+            Codebase
           </a>
         </div>
-        <span className="text-[10px] font-black text-white/20">{project.year}</span>
+        <span className="text-xs font-black text-white/20 tracking-widest">{project.year}</span>
       </div>
     </motion.div>
   );
 }
 
 export default function Projects() {
-  return (
-    <section id="projects" className="section-pad relative z-10">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <span className="text-indigo-400 text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Portfolio</span>
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-white mb-6 font-[var(--font-poppins)] tracking-tighter">
-            Digital <span className="gradient-text">Masterpieces</span>
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg font-medium leading-relaxed">
-            A curated selection of my most challenging and impactful engineering feats.
-          </p>
-        </motion.div>
+  const containerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0);
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, i) => (
-            <Card key={project.title} project={project} index={i} />
-          ))}
+  useGSAP(() => {
+    if (!containerRef.current || !triggerRef.current) return;
+    if (window.innerWidth < 768) return; // Disable on mobile
+
+    const sections = gsap.utils.toArray(".project-card");
+    const amountToScroll = containerRef.current.scrollWidth - window.innerWidth;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerRef.current,
+        start: "top top",
+        end: `+=${containerRef.current.scrollWidth}`,
+        pin: true,
+        scrub: 1,
+        onUpdate: (self) => setProgress(self.progress),
+      },
+    });
+
+    tl.to(containerRef.current, {
+      x: -amountToScroll,
+      ease: "none",
+    });
+
+    // Individual card focus animations
+    sections.forEach((section: any) => {
+      gsap.to(section, {
+        opacity: 1,
+        scale: 1.05,
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: section,
+          containerAnimation: tl,
+          start: "left center",
+          end: "right center",
+          toggleActions: "play reverse play reverse",
+          scrub: true,
+        }
+      });
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+  }, { scope: triggerRef });
+
+  return (
+    <section id="projects" ref={triggerRef} className="relative z-10 overflow-hidden bg-black/50">
+      {/* Ambient Glow Background */}
+      <motion.div 
+        animate={{ opacity: progress > 0 && progress < 1 ? 1 : 0 }}
+        className="absolute inset-0 pointer-events-none transition-opacity duration-1000"
+      >
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-indigo-500/10 blur-[150px] rounded-full" />
+        <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-purple-500/5 blur-[120px] rounded-full" />
+      </motion.div>
+
+      <div className="min-h-screen flex flex-col justify-center py-24">
+        {/* Header */}
+        <div className="max-w-7xl mx-auto px-6 mb-16 md:mb-24 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true }}
+            className="text-left"
+          >
+            <span className="text-indigo-400 text-xs font-black uppercase tracking-[0.4em] mb-4 block">Archive 01</span>
+            <h2 className="text-4xl md:text-6xl lg:text-8xl font-black text-white mb-6 font-[var(--font-poppins)] tracking-tighter">
+              Digital <span className="gradient-text">Masterpieces</span>
+            </h2>
+          </motion.div>
         </div>
 
-        {/* View More */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <Magnetic>
-            <a
-              href="https://github.com/CodeByAmrit"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-10 py-5 rounded-2xl glass border border-white/10 text-white hover:border-indigo-500/40 transition-all duration-500 font-bold text-xs uppercase tracking-widest hover:shadow-2xl hover:shadow-indigo-500/20"
-            >
-              <i className="fi fi-brands-github text-lg" />
-              Explore full archive
-              <i className="fi fi-rr-arrow-right text-xs" />
-            </a>
-          </Magnetic>
-        </motion.div>
+        {/* Horizontal Container */}
+        <div className="overflow-x-auto md:overflow-visible pb-12 md:pb-0">
+          <div 
+            ref={containerRef} 
+            className="flex flex-col md:flex-row gap-8 px-6 md:px-[10vw] w-max md:w-auto"
+          >
+            {projects.map((project, i) => (
+              <Card key={project.title} project={project} />
+            ))}
+            
+            {/* View More Card */}
+            <div className="shrink-0 w-[85vw] md:w-[400px] h-[500px] md:h-[600px] flex items-center justify-center">
+              <Magnetic>
+                <a
+                  href="https://github.com/CodeByAmrit"
+                  target="_blank"
+                  className="group flex flex-col items-center gap-6 p-12 rounded-3xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-500"
+                >
+                  <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center text-3xl group-hover:scale-110 group-hover:bg-indigo-500/10 transition-all duration-500">
+                    <i className="fi fi-rr-arrow-right" />
+                  </div>
+                  <span className="text-xs font-black uppercase tracking-[0.3em] text-gray-400 group-hover:text-white transition-colors">Full Archive</span>
+                </a>
+              </Magnetic>
+            </div>
+          </div>
+        </div>
+
+        {/* Progress Bar (Desktop Only) */}
+        <div className="hidden md:block absolute bottom-12 left-1/2 -translate-x-1/2 w-[40vw] h-px bg-white/10 overflow-hidden">
+          <motion.div 
+            className="h-full bg-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.5)]"
+            style={{ width: `${progress * 100}%` }}
+          />
+        </div>
+
+        {/* Mobile Swipe Hint */}
+        <div className="md:hidden text-center mt-8 text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 animate-pulse">
+          Swipe to explore masterpieces
+        </div>
       </div>
     </section>
   );
 }
+
 
