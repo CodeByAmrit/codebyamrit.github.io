@@ -157,7 +157,7 @@ export default function Projects() {
     if (!containerRef.current || !triggerRef.current) return;
     if (window.innerWidth < 768) return; // Disable on mobile
 
-    const sections = gsap.utils.toArray(".project-card");
+    const sections = gsap.utils.toArray<Element>(".project-card");
     const amountToScroll = containerRef.current.scrollWidth - window.innerWidth;
 
     const tl = gsap.timeline({
@@ -177,7 +177,7 @@ export default function Projects() {
     });
 
     // Individual card focus animations
-    sections.forEach((section: Element) => {
+    sections.forEach((section) => {
       gsap.to(section, {
         opacity: 1,
         scale: 1.05,
