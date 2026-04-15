@@ -73,7 +73,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-[var(--font-inter)] antialiased">
+      <body className="font-[var(--font-inter)] antialiased" suppressHydrationWarning>
         <div className="aurora-bg" />
         {children}
       </body>
