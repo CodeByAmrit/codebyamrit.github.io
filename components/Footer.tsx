@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const navLinks = [
@@ -36,8 +37,13 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm font-[var(--font-poppins)] shadow-lg shadow-indigo-500/30">
-                AS
+              <div className="relative w-9 h-9">
+                <Image
+                  src="/logo.svg"
+                  alt="Logo"
+                  fill
+                  className="object-contain logo-glow"
+                />
               </div>
               <span className="text-white font-semibold text-lg tracking-tight">Amrit Sharma</span>
             </Link>

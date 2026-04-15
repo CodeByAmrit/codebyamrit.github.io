@@ -88,7 +88,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable} ${poppins.variable}`}>
       <head>
-        <link rel="icon" href="/images/favicon.ico" />
+        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
         {/* Google Analytics */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCCK7P9XQM" />
         <script

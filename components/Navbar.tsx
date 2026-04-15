@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -56,8 +56,13 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm font-[var(--font-poppins)] shadow-lg shadow-indigo-500/30">
-            AS
+          <div className="relative w-10 h-10 group-hover:scale-110 transition-transform duration-300">
+            <Image
+              src="/logo.svg"
+              alt="Logo"
+              fill
+              className="object-contain logo-glow"
+            />
           </div>
           <span className="text-white font-semibold text-lg tracking-tight group-hover:text-indigo-300 transition-colors duration-300">
             Amrit Sharma

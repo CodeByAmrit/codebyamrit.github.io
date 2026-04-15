@@ -135,16 +135,16 @@ export default function Technologies() {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="relative aspect-square rounded-2xl glass border border-white/5 flex flex-col items-center justify-center p-4 hover:border-indigo-500/30 transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-indigo-500/10 overflow-hidden">
+                <div className="relative aspect-square rounded-2xl glass border border-white/5 flex flex-col items-center justify-center p-4 hover:border-indigo-500/30 transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-indigo-500/10">
                   {/* Hover Glow */}
                   <div className="absolute inset-0 bg-gradient-to-t from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   
                   {tech.icon ? (
-                    <div className="relative z-10 group-hover:scale-110 transition-all duration-500">
+                    <div className="relative z-10 group-hover:scale-110 transition-all duration-500 logo-glow">
                       {tech.icon}
                     </div>
                   ) : (
-                    <i className={`${tech.iconClass} text-4xl md:text-5xl group-hover:scale-110 transition-all duration-500 ${tech.color}`}></i>
+                    <i className={`${tech.iconClass} text-4xl md:text-5xl group-hover:scale-110 transition-all duration-500 ${tech.color} logo-glow`}></i>
                   )}
                   
                   <span className="mt-3 text-xs md:text-sm font-medium text-gray-500 group-hover:text-gray-200 transition-colors">
