@@ -67,6 +67,10 @@ export const metadata: Metadata = {
     images: ["/amritnew.png"],
     creator: "@warrior_amrit",
   },
+  icons: {
+    icon: "/logo.svg",
+    apple: "/logo.svg",
+  },
   robots: {
     index: true,
     follow: true,

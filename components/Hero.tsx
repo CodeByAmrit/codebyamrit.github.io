@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import Magnetic from "./ui/Magnetic";
 
-import InteractiveBackground from "./ui/InteractiveBackground";
+import HeroBackground from "./ui/HeroBackground";
 
 const words = ["Secure", "Modern", "Scalable"];
 type FlipPhase = "in" | "hold" | "out";
@@ -79,7 +79,7 @@ export default function Hero() {
       className="relative z-10 min-h-screen flex items-center pt-24 pb-12 overflow-hidden"
     >
       {/* High-end interactive background texture */}
-      <InteractiveBackground />
+      <HeroBackground />
 
       <div className="max-w-7xl mx-auto px-6 w-full">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
