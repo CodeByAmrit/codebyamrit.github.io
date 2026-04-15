@@ -2,41 +2,39 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { FolderGit2, Code2, Users, Server } from "lucide-react";
-
 const stats = [
   {
-    icon: FolderGit2,
-    value: 15,
+    iconClass: "fi fi-rr-rocket-lunch",
+    value: 2,
     suffix: "+",
-    label: "Projects",
+    label: "Years Experience",
     color: "text-indigo-400",
     bg: "bg-indigo-500/10",
     border: "border-indigo-500/20",
   },
   {
-    icon: Code2,
-    value: 10,
-    suffix: "K+",
-    label: "Lines of Code",
+    iconClass: "fi fi-rr-code-simple",
+    value: 15,
+    suffix: "+",
+    label: "Projects Completed",
     color: "text-purple-400",
     bg: "bg-purple-500/10",
     border: "border-purple-500/20",
   },
   {
-    icon: Users,
-    value: 98,
-    suffix: "%",
-    label: "Client Satisfaction",
+    iconClass: "fi fi-rr-star",
+    value: 10,
+    suffix: "+",
+    label: "Happy Clients",
     color: "text-pink-400",
     bg: "bg-pink-500/10",
     border: "border-pink-500/20",
   },
   {
-    icon: Server,
-    value: 99,
+    iconClass: "fi fi-rr-shield-check",
+    value: 100,
     suffix: "%",
-    label: "System Uptime",
+    label: "Commitment",
     color: "text-cyan-400",
     bg: "bg-cyan-500/10",
     border: "border-cyan-500/20",
@@ -108,7 +106,6 @@ export default function Stats() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {stats.map((stat, i) => {
-            const Icon = stat.icon;
             return (
               <motion.div
                 key={stat.label}
@@ -121,7 +118,7 @@ export default function Stats() {
                 <div
                   className={`w-12 h-12 rounded-xl ${stat.bg} flex items-center justify-center mx-auto mb-4`}
                 >
-                  <Icon className={`w-6 h-6 ${stat.color}`} />
+                  <i className={`${stat.iconClass} text-xl ${stat.color}`}></i>
                 </div>
                 <div className={`text-3xl font-bold ${stat.color} mb-1 font-[var(--font-poppins)]`}>
                   <CountUp target={stat.value} suffix={stat.suffix} trigger={triggered} />

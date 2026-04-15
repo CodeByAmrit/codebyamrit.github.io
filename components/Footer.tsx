@@ -1,32 +1,28 @@
-"use client";
-
-import { Heart } from "lucide-react";
 import Link from "next/link";
-import { Github, Linkedin, Instagram } from "@/components/Icons";
 
 const navLinks = [
   { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
+  { href: "#technologies", label: "Skills" },
   { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
+  { href: "#testimonials", label: "Testimonials" },
 ];
 
 const socials = [
   {
     href: "https://github.com/CodeByAmrit",
-    Icon: Github,
+    iconClass: "fi fi-brands-github",
     label: "GitHub",
     hoverColor: "hover:text-white hover:bg-white/10",
   },
   {
     href: "https://www.linkedin.com/in/amrit-sharma-b11b88124",
-    Icon: Linkedin,
+    iconClass: "fi fi-brands-linkedin",
     label: "LinkedIn",
     hoverColor: "hover:text-blue-400 hover:bg-blue-500/10",
   },
   {
     href: "https://www.instagram.com/warrior_amrit",
-    Icon: Instagram,
+    iconClass: "fi fi-brands-instagram",
     label: "Instagram",
     hoverColor: "hover:text-pink-400 hover:bg-pink-500/10",
   },
@@ -87,7 +83,6 @@ export default function Footer() {
             </h4>
             <div className="flex gap-3">
               {socials.map((social) => {
-                const { Icon } = social;
                 return (
                   <a
                     key={social.label}
@@ -97,7 +92,7 @@ export default function Footer() {
                     aria-label={social.label}
                     className={`w-10 h-10 rounded-xl glass border border-white/10 flex items-center justify-center text-gray-400 transition-all duration-300 ${social.hoverColor}`}
                   >
-                    <Icon className="w-4 h-4" />
+                    <i className={`${social.iconClass} text-base`} />
                   </a>
                 );
               })}
@@ -110,8 +105,8 @@ export default function Footer() {
           <p className="text-gray-500 text-sm">
             © 2025 Amrit Sharma. All Rights Reserved.
           </p>
-          <p className="text-gray-600 text-xs flex items-center gap-1">
-            Built with <Heart className="w-3 h-3 text-pink-500 fill-current" /> Next.js &amp; Tailwind
+          <p className="text-gray-600 text-xs flex items-center gap-1.5">
+            Built with <i className="fi fi-ss-heart text-[10px] text-pink-500" /> Next.js &amp; Tailwind
           </p>
         </div>
       </div>

@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, ArrowUpRight } from "lucide-react";
-import { Github } from "@/components/Icons";
 import Image from 'next/image';
 
 const projects = [
@@ -155,19 +153,19 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`View live demo of ${project.title}`}
-                      className="flex items-center gap-1 text-sm text-gray-300 hover:text-white transition-colors font-medium group/link"
+                      className="flex items-center gap-1.5 text-sm text-gray-300 hover:text-white transition-colors font-medium group/link"
                     >
                       Live Demo
-                      <ArrowUpRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                      <i className="fi fi-rr-arrow-up-right text-[10px] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                     </a>
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`View ${project.title} source code on GitHub`}
-                      className="flex items-center gap-1 text-sm text-gray-300 hover:text-white transition-colors font-medium group/link"
+                      className="flex items-center gap-1.5 text-sm text-gray-300 hover:text-white transition-colors font-medium group/link"
                     >
-                      <Github className="w-3.5 h-3.5" />
+                      <i className="fi fi-brands-github text-xs" />
                       GitHub
                     </a>
                   </div>
@@ -190,11 +188,11 @@ export default function Projects() {
             href="https://github.com/CodeByAmrit"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl glass border border-white/10 text-gray-300 hover:text-white hover:border-indigo-500/40 transition-all duration-300 font-medium text-sm hover:shadow-lg hover:shadow-indigo-500/10"
+            className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl glass border border-white/10 text-gray-300 hover:text-white hover:border-indigo-500/40 transition-all duration-300 font-medium text-sm hover:shadow-lg hover:shadow-indigo-500/10"
           >
-            <Github className="w-4 h-4" />
+            <i className="fi fi-brands-github text-base" />
             View All Projects on GitHub
-            <ExternalLink className="w-3.5 h-3.5" />
+            <i className="fi fi-rr-arrow-right text-xs" />
           </a>
         </motion.div>
       </div>

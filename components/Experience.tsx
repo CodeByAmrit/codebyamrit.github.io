@@ -1,11 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Layers, Cpu } from "lucide-react";
 
 const experiences = [
   {
-    icon: Layers,
+    iconClass: "fi fi-rr-layers",
     title: "Full Stack Development",
     subtitle: "3+ Years Experience",
     description:
@@ -16,7 +15,7 @@ const experiences = [
     glow: "hover:shadow-indigo-500/10",
   },
   {
-    icon: Cpu,
+    iconClass: "fi fi-rr-settings-sliders",
     title: "System Architecture",
     subtitle: "Enterprise Solutions",
     description:
@@ -52,7 +51,6 @@ export default function Experience() {
         {/* Cards */}
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {experiences.map((exp, i) => {
-            const Icon = exp.icon;
             return (
               <motion.div
                 key={exp.title}
@@ -65,7 +63,7 @@ export default function Experience() {
                 <div
                   className={`w-14 h-14 rounded-2xl ${exp.iconBg} flex items-center justify-center mb-6`}
                 >
-                  <Icon className={`w-7 h-7 ${exp.color}`} />
+                  <i className={`${exp.iconClass} text-2xl ${exp.color}`}></i>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-1 font-[var(--font-poppins)]">
                   {exp.title}

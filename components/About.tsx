@@ -1,38 +1,37 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Mail, Clock, GraduationCap } from "lucide-react";
 
 const timeline = [
   {
     period: "2023 – 2026",
     title: "B.Tech in AI & ML",
     institution: "Maharshi Dayanand University, Rohtak",
-    icon: "🎓",
+    iconClass: "fi fi-rr-graduation-cap",
   },
   {
     period: "2021 – 2023",
     title: "Diploma in Computer Engineering",
     institution: "Government Polytechnic, Sonipat",
-    icon: "📜",
+    iconClass: "fi fi-rr-document",
   },
   {
     period: "2018 – 2021",
     title: "Secondary & Sr. Secondary",
     institution: "Rishikul Vidyapeeth, Sonipat",
-    icon: "🏫",
+    iconClass: "fi fi-rr-school",
   },
 ];
 
 const contactInfo = [
-  { icon: MapPin, label: "Location", value: "Sonipat, Haryana, India" },
+  { iconClass: "fi fi-rr-marker", label: "Location", value: "Sonipat, Haryana, India" },
   {
-    icon: Mail,
+    iconClass: "fi fi-rr-envelope",
     label: "Email",
     value: "amritsharma2617@gmail.com",
     href: "mailto:amritsharma2617@gmail.com",
   },
-  { icon: Clock, label: "Availability", value: "Open to freelance & full-time" },
+  { iconClass: "fi fi-rr-clock", label: "Availability", value: "Open to freelance & full-time" },
 ];
 
 export default function About() {
@@ -85,11 +84,10 @@ export default function About() {
             {/* Contact Info */}
             <div className="glass-card rounded-2xl p-6 space-y-4">
               {contactInfo.map((item) => {
-                const Icon = item.icon;
                 return (
                   <div key={item.label} className="flex items-start gap-4">
                     <div className="w-9 h-9 rounded-lg bg-indigo-500/10 flex items-center justify-center shrink-0">
-                      <Icon className="w-4 h-4 text-indigo-400" />
+                      <i className={`${item.iconClass} text-xs text-indigo-400`} />
                     </div>
                     <div>
                       <p className="text-xs text-gray-500 mb-0.5">{item.label}</p>
@@ -119,7 +117,7 @@ export default function About() {
           >
             <div className="glass-card rounded-2xl p-8">
               <div className="flex items-center gap-3 mb-8">
-                <GraduationCap className="w-5 h-5 text-indigo-400" />
+                <i className="fi fi-rr-graduation-cap text-indigo-400" />
                 <h3 className="text-xl font-bold text-white font-[var(--font-poppins)]">
                   Academic Journey
                 </h3>
@@ -142,7 +140,8 @@ export default function About() {
                       {item.period}
                     </time>
                     <h4 className="text-base font-semibold text-white mt-1 mb-0.5">
-                      {item.icon} {item.title}
+                      <i className={`${item.iconClass} mr-2 text-sm`} />
+                      {item.title}
                     </h4>
                     <p className="text-gray-400 text-sm">{item.institution}</p>
                   </motion.div>

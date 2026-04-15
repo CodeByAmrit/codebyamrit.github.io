@@ -4,13 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ExternalLink } from "lucide-react";
 
 const navLinks = [
   { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
+  { href: "#technologies", label: "Skills" },
   { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
+  { href: "#testimonials", label: "Testimonials" },
 ];
 
 export default function Navbar() {
@@ -83,15 +82,24 @@ export default function Navbar() {
         </nav>
 
         {/* CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-4">
           <a
             href="/profile.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold glass border border-white/10 text-gray-200 hover:text-white hover:border-indigo-500/30 transition-all duration-300"
+          >
+            <i className="fi fi-rr-file-user text-xs" />
+            <span>My Resume</span>
+          </a>
+          <a
+            href="https://wa.me/919817044885"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 btn-gradient px-5 py-2.5 rounded-xl text-sm font-semibold shadow-lg shadow-indigo-500/25"
           >
             <span>Let&apos;s Connect</span>
-            <ExternalLink className="w-3.5 h-3.5 relative z-10" />
+            <i className="fi fi-rr-arrow-right text-[10px] relative z-10" />
           </a>
         </div>
 
@@ -102,7 +110,11 @@ export default function Navbar() {
           className="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
           aria-label="Toggle mobile menu"
         >
-          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileOpen ? (
+            <i className="fi fi-rr-cross text-sm flex items-center justify-center w-5 h-5" />
+          ) : (
+            <i className="fi fi-rr-menu-burger text-base flex items-center justify-center w-5 h-5" />
+          )}
         </button>
       </div>
 
@@ -137,7 +149,17 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleNavClick}
-                className="btn-gradient text-center px-5 py-3 rounded-xl text-sm font-semibold mt-2"
+                className="glass text-center px-5 py-3 rounded-xl text-sm font-semibold mt-2 text-gray-200 border border-white/10"
+              >
+                <i className="fi fi-rr-file-user mr-2 text-xs" />
+                <span>My Resume</span>
+              </a>
+              <a
+                href="https://wa.me/919817044885"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleNavClick}
+                className="btn-gradient text-center px-5 py-3 rounded-xl text-sm font-semibold"
               >
                 <span>Let&apos;s Connect</span>
               </a>

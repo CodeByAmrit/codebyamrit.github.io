@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
-import { ChevronRight } from "lucide-react";
-import { Github, Linkedin } from "@/components/Icons";
 
 const words = ["Secure", "Modern", "Scalable"];
 type FlipPhase = "in" | "hold" | "out";
@@ -97,7 +95,7 @@ export default function Hero() {
             {/* Headline */}
             <motion.h1
               variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 font-[var(--font-poppins)] leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-[var(--font-poppins)] leading-tight"
             >
               Hi, I&apos;m{" "}
               <span className="gradient-text">Amrit</span>
@@ -114,7 +112,7 @@ export default function Hero() {
             {/* Subtitle */}
             <motion.p
               variants={itemVariants}
-              className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-300 mb-5 font-[var(--font-poppins)]"
+              className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-300 mb-2 font-[var(--font-poppins)]"
             >
               Web Solutions
             </motion.p>
@@ -134,10 +132,10 @@ export default function Hero() {
                 href="https://wa.me/919817044885"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-gradient flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold shadow-lg shadow-indigo-500/25 text-sm"
+                className="btn-gradient flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold shadow-lg shadow-indigo-500/25 text-sm"
               >
                 <span>Get in Touch</span>
-                <ChevronRight className="w-4 h-4 relative z-10" />
+                <i className="fi fi-rr-arrow-right text-[10px] relative z-10" />
               </a>
 
               <div className="flex items-center gap-3">
@@ -148,7 +146,7 @@ export default function Hero() {
                   aria-label="GitHub"
                   className="w-11 h-11 rounded-xl glass border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:border-indigo-400 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20"
                 >
-                  <Github className="w-5 h-5" />
+                  <i className="fi fi-brands-github text-lg" />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/amrit-sharma-b11b88124"
@@ -157,7 +155,7 @@ export default function Hero() {
                   aria-label="LinkedIn"
                   className="w-11 h-11 rounded-xl glass border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:border-indigo-400 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20"
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <i className="fi fi-brands-linkedin text-lg" />
                 </a>
               </div>
             </motion.div>
@@ -173,11 +171,8 @@ export default function Hero() {
             {/* Glow ring */}
             <div className="absolute inset-0 rounded-full profile-glow" />
 
-            {/* Floating animation wrapper */}
-            <motion.div
-              animate={{ y: [0, -18, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="relative z-10 w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96"
+            <div
+              className="relative z-10 w-80 h-80 md:w-96 md:h-96 lg:w-[550px] lg:h-[550px]"
             >
               <Image
                 src="/amritnew.png"
@@ -190,11 +185,7 @@ export default function Hero() {
                   WebkitMaskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
                 }}
               />
-            </motion.div>
-
-            {/* Decorative rings */}
-            <div className="absolute inset-0 rounded-full border border-indigo-500/10 scale-110" />
-            <div className="absolute inset-0 rounded-full border border-purple-500/5 scale-125" />
+            </div>
           </motion.div>
         </div>
       </div>

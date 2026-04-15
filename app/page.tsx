@@ -2,9 +2,11 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import About from "@/components/About";
-import Skills from "@/components/Skills";
+import Mission from "@/components/Mission";
+import Technologies from "@/components/Technologies";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
+import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
@@ -15,10 +17,12 @@ export default function Home() {
       <main>
         <Hero />
         <Stats />
+        <Mission />
+        <Technologies />
         <About />
-        <Skills />
         <Projects />
         <Experience />
+        <Testimonials />
         <CTA />
       </main>
       <Footer />
