@@ -7,7 +7,7 @@ import Magnetic from "./ui/Magnetic";
 
 const technologies = [
   { name: "Framework", tech: "React 19", src: "/logo_dark.svg" },
-  { name: "Architecture", tech: "Next.js 15", src: "/next-js-svgrepo-com.svg" },
+  { name: "Architecture", tech: "Next.js 16", src: "/next-js-svgrepo-com.svg" },
   { name: "Runtime", tech: "Node.js", src: "/nodejs-svgrepo-com.svg" },
   { name: "Infrastructure", tech: "Docker", icon: "fi fi-brands-docker", color: "text-blue-400" },
   { name: "Cloud", tech: "AWS", src: "/aws-svgrepo-com.svg" },
@@ -110,4 +110,3 @@ export default function Technologies() {
     </section>
   );
 }
-

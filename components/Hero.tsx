@@ -42,7 +42,7 @@ function FlipWord() {
   }, [phase, index]);
 
   return (
-    <div className="inline-flex" aria-live="polite">
+    <div className="inline-flex text-indigo-300" aria-live="polite">
       {chars.map((char, i) => (
         <motion.span
           key={`${index}-${i}`}
@@ -81,12 +81,12 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative z-10 min-h-screen flex items-center pt-24 pb-12 overflow-hidden"
+      className="relative z-10 min-h-screen flex items-center pt-20 pb-10 overflow-hidden"
     >
       <HeroBackground />
 
       <div className="max-w-7xl mx-auto px-6 w-full">
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center -mt-10">
+        <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center -mt-6">
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -102,47 +102,62 @@ export default function Hero() {
 
             <motion.h1
               variants={itemVariants}
-              className="text-5xl md:text-6xl lg:text-8xl font-black text-white font-[var(--font-poppins)] leading-tight tracking-tighter"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-black text-white font-[var(--font-poppins)] leading-[0.92] tracking-tighter"
             >
               Hi, I&apos;m <span className="gradient-text">Amrit Sharma</span>
             </motion.h1>
 
+            <motion.p
+              variants={itemVariants}
+              className="text-lg sm:text-xl md:text-2xl lg:text-[2rem] font-medium text-gray-400 mt-4 font-[var(--font-poppins)]"
+            >
+              Full Stack Developer specializing 
+            </motion.p>
+
             <motion.div
               variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-7xl font-black text-white/90 font-[var(--font-poppins)] leading-none my-4 h-20 md:h-24 lg:h-28 flex items-center"
+              className="text-4xl sm:text-6xl md:text-4xl lg:text-8xl font-black text-white/90 font-[var(--font-poppins)] leading-[1] mt-2 mb-3 min-h-[3rem] md:min-h-[4rem] lg:min-h-[4.75rem] flex items-center flex-wrap gap-x-3"
             >
               <FlipWord />
             </motion.div>
 
             <motion.p
               variants={itemVariants}
-              className="text-xl md:text-2xl lg:text-3xl font-medium text-gray-400 mb-6 font-[var(--font-poppins)]"
+              className="text-lg sm:text-xl md:text-2xl lg:text-[2rem] font-medium text-gray-400 mb-4 font-[var(--font-poppins)]"
             >
               Architecting Digital Excellence
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-6 items-center">
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-4 items-center">
               <Magnetic>
                 <a
-                  href="https://wa.me/919817044885"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-gradient flex items-center gap-3 px-8 py-4 rounded-2xl font-bold shadow-2xl shadow-indigo-500/40 text-sm group"
+                  href="#contact"
+                  className="btn-gradient flex items-center gap-3 px-6 py-3.5 rounded-2xl font-bold shadow-2xl shadow-indigo-500/40 text-xs sm:text-sm group"
                 >
-                  <span>Start a Project</span>
+                  <span>Start a Conversation</span>
                   <i className="fi fi-rr-arrow-right text-xs group-hover:translate-x-1 transition-transform" />
                 </a>
               </Magnetic>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 flex-wrap">
+                <Magnetic>
+                  <a
+                    href="/profile.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="glass px-5 py-3.5 rounded-2xl border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:border-indigo-400 transition-all duration-300 text-[11px] sm:text-xs font-black uppercase tracking-[0.18em]"
+                  >
+                    Resume
+                  </a>
+                </Magnetic>
                 <Magnetic>
                   <a
                     href="https://github.com/CodeByAmrit"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-14 h-14 rounded-2xl glass border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:border-indigo-400 transition-all duration-300"
+                    className="w-12 h-12 rounded-2xl glass border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:border-indigo-400 transition-all duration-300"
                   >
-                    <i className="fi fi-brands-github text-xl" />
+                    <i className="fi fi-brands-github text-lg" />
                   </a>
                 </Magnetic>
                 <Magnetic>
@@ -150,9 +165,9 @@ export default function Hero() {
                     href="https://www.linkedin.com/in/amrit-sharma-b11b88124"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-14 h-14 rounded-2xl glass border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:border-indigo-400 transition-all duration-300"
+                    className="w-12 h-12 rounded-2xl glass border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:border-indigo-400 transition-all duration-300"
                   >
-                    <i className="fi fi-brands-linkedin text-xl" />
+                    <i className="fi fi-brands-linkedin text-lg" />
                   </a>
                 </Magnetic>
               </div>
@@ -167,7 +182,7 @@ export default function Hero() {
           >
             <div className="absolute w-[120%] h-[120%] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none" />
 
-            <div className="relative z-10 w-80 h-80 md:w-96 md:h-96 lg:w-[600px] lg:h-[600px]">
+            <div className="relative z-10 w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[34rem] lg:h-[34rem]">
               <Image
                 src="/amritnew.png"
                 alt="Amrit Sharma, Senior Full Stack Developer"
