@@ -12,6 +12,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
+    title: "Aksuncity",
+    subtitle: "Real Estate Platform",
+    status: "Live",
+    statusColor: "bg-amber-500/20 text-amber-300 border border-amber-500/20",
+    year: "2026",
+    description:
+      "Built a premium real estate platform for Aksuncity with three core divisions: a documented Express REST API backend, an admin dashboard for record management, and a polished public website for modern property discovery.",
+    badges: [
+      { name: "Next.js 14", color: "bg-amber-500/15 text-amber-200 border-amber-500/20" },
+      { name: "Express API", color: "bg-amber-500/15 text-amber-200 border-amber-500/20" },
+      { name: "TypeScript", color: "bg-amber-500/15 text-amber-200 border-amber-500/20" },
+    ],
+    liveUrl: "https://aksuncity.com",
+    githubUrl: "https://github.com/codebyamrit/aksuncity.com",
+    accentColor: "from-amber-500/10 to-orange-500/5",
+    icon: "https://aksuncity.com/favicon.ico",
+  },
+  {
     title: "StreamVision",
     subtitle: "Govt Infrastructure",
     status: "Live",
@@ -103,8 +121,8 @@ function Card({ project }: { project: typeof projects[0] }) {
       <div className="flex items-start justify-between mb-4 relative z-10">
         <div className="flex items-center gap-3">
           <Magnetic>
-            <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center p-2 shadow-xl transition-transform">
-              <Image width={40} height={40} src={project.icon} alt={`${project.title} icon`} className="object-contain logo-glow" />
+            <div className="w-16 h-16 rounded-xl flex items-center justify-center p-2 shadow-xl transition-transform">
+              <Image width={45} height={45} src={project.icon} alt={`${project.title} icon`} className="object-contain logo-glow" />
             </div>
           </Magnetic>
           <div>
@@ -270,5 +288,4 @@ export default function Projects() {
     </section>
   );
 }
-
 
