@@ -1,58 +1,66 @@
-[![Alt text](./images/banner.png)](https://github.com/codebyamrit)
+[![Alt text](./public/images/banner.png)](https://github.com/codebyamrit)
+# Amrit Sharma Portfolio
 
-<h1 align="center">Hi, I'm Amrit! 👋</h1>
-<img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=codebyamrit.visitor" />
+Personal portfolio source for `https://amritsharma.dev`, built with Next.js App Router and exported as a static site.
 
-<h3 align="center">🚀 Full Stack & Systems Developer | AI & Automation Enthusiast</h3>
+## Stack
 
----
+- Next.js `16.2.3`
+- React `19`
+- TypeScript
+- Tailwind CSS `4`
+- Framer Motion
+- GSAP
+- Lenis
+- Umami analytics
 
-<h3 align="center">🧰 Languages and Tools</h3>
+## Project Structure
 
-<p align="center">
-  <a href="https://codebyamrit.co.in">
-    <img src="https://skillicons.dev/icons?i=py,nodejs,express,html,tailwind,js,mysql,mongodb,flask,git,github,linux,docker,ffmpeg" alt="Skills and tools"/>
-  </a>
-</p>
+- `app/` App Router entrypoint, metadata, sitemap, robots, manifest
+- `components/` Landing page sections and reusable UI
+- `components/ui/` Interactive helpers such as custom cursor, magnetic UI, and smooth scrolling
+- `public/` Static assets and `profile.html`
 
-![GitHub Snake](./images/github-snake-dark.**svg**)
+## Local Development
 
----
+```bash
+npm install
+npm run dev
+```
 
-<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 20px;">
-    <div style="flex: 1; max-width: 45%; margin-left: 10px; padding-left: 10px;">
-        <img align="left" width="50%" alt="Metrics" src="./images/background.gif">
-    </div>
+Open `http://localhost:3000`.
 
-  <div style="flex: 1; max-width: 45%; text-align: left; margin-left: 20px;">
-        <h3>🌐 Let's Connect!</h3>
-        <p>
-            <a href="https://www.linkedin.com/in/amrit-mduniversity/" target="_blank">
-                <img src="https://raw.githubusercontent.com/CLorant/readme-social-icons/main/large/filled/linkedin.svg" alt="LinkedIn">
-            </a>
-            <a href="https://www.instagram.com/codebyamrit" target="_blank">
-                <img src="https://raw.githubusercontent.com/CLorant/readme-social-icons/main/large/filled/instagram.svg" alt="Instagram">
-            </a>
-        </p>
+## Validation
 
-  <h3>✨ Fun Facts</h3>
-        <ul>
-            <li>Building real-time systems like <strong>StreamVision</strong> with RTSP & FFmpeg.</li>
-            <li>Love teaching AI through my chatbot project powered by Gemini API + Flask.</li>
-            <li>Working on a movie recommender system called <strong>Chayan</strong> using NLP.</li>
-            <li>Enjoy debugging, automation, and optimizing backend systems for performance.</li>
-        </ul>
+```bash
+npm run lint
+npm run build
+```
 
-  <h3>🧑‍💻 About Me</h3>
-        <p>
-            I'm a Computer Engineering student at UIET, MDU Rohtak, passionate about backend development, real-time streaming, and applied AI. 
-        </p>
-        <p>
-            I love building systems that solve real problems — whether it's smart video streaming, data scraping, or intelligent recommendations. 
-            Currently exploring cloud-native development, desktop apps with Electron, and ML integrations.
-        </p>
-        <p>
-            GitHub is where I experiment, learn, and share — feel free to explore my repos or connect with me!
-        </p>
-    </div>
-</div>
+Use both commands before pushing structural, SEO, animation, or config changes.
+
+## Deployment
+
+The project is configured for static export:
+
+- `next.config.ts` uses `output: "export"`
+- generated output is written to `out/`
+- GitHub Pages deployment is handled by `.github/workflows/deploy.yml`
+
+## SEO Files
+
+The main SEO setup lives in:
+
+- `app/layout.tsx`
+- `app/sitemap.ts`
+- `app/robots.ts`
+- `app/manifest.ts`
+
+When updating branding, domain, or social links, keep those files in sync.
+
+## Notes For Future Changes
+
+- Preserve static export compatibility.
+- Keep the site centered on the `Amrit Sharma` brand and portfolio.
+- Avoid replacing the current motion-heavy premium design with a generic template style.
+- Maintain `public/profile.html` unless it is intentionally being replaced.
