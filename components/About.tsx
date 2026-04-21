@@ -71,7 +71,7 @@ export default function About() {
           <Card span="md:col-span-4 md:row-span-1 border-indigo-500/20 bg-indigo-500/5">
             <h3 className="text-xl font-black text-white mb-6 uppercase tracking-widest">Connect</h3>
             <div className="space-y-4">
-              <a href="mailto:amritsharma2617@gmail.com" className="flex items-center gap-4 group/link">
+              <a href="mailto:contact@amritsharma.dev" className="flex items-center gap-4 group/link">
                 <Magnetic>
                   <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center transition-colors group-hover/link:bg-indigo-500/20">
                     <i className="fi fi-rr-envelope text-indigo-400" />

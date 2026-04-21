@@ -69,7 +69,12 @@ const containerVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+  },
 };
 
 export default function Hero() {
@@ -78,19 +83,16 @@ export default function Hero() {
       id="home"
       className="relative z-10 min-h-screen flex items-center pt-24 pb-12 overflow-hidden"
     >
-      {/* High-end interactive background texture */}
       <HeroBackground />
 
       <div className="max-w-7xl mx-auto px-6 w-full">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center -mt-10">
-          {/* ── Left Content ── */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             className="text-center md:text-left flex flex-col items-center md:items-start"
           >
-            {/* Tag */}
             <motion.div variants={itemVariants}>
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-8">
                 <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
@@ -98,16 +100,13 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            {/* Headline */}
             <motion.h1
               variants={itemVariants}
               className="text-5xl md:text-6xl lg:text-8xl font-black text-white font-[var(--font-poppins)] leading-tight tracking-tighter"
             >
-              Hi, I&apos;m{" "}
-              <span className="gradient-text">Amrit</span>
+              Hi, I&apos;m <span className="gradient-text">Amrit Sharma</span>
             </motion.h1>
 
-            {/* Flip word line */}
             <motion.div
               variants={itemVariants}
               className="text-4xl md:text-5xl lg:text-7xl font-black text-white/90 font-[var(--font-poppins)] leading-none my-4 h-20 md:h-24 lg:h-28 flex items-center"
@@ -115,7 +114,6 @@ export default function Hero() {
               <FlipWord />
             </motion.div>
 
-            {/* Subtitle */}
             <motion.p
               variants={itemVariants}
               className="text-xl md:text-2xl lg:text-3xl font-medium text-gray-400 mb-6 font-[var(--font-poppins)]"
@@ -123,7 +121,6 @@ export default function Hero() {
               Architecting Digital Excellence
             </motion.p>
 
-            {/* CTA Buttons */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-6 items-center">
               <Magnetic>
                 <a
@@ -162,20 +159,18 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* ── Right Content: Static Profile ── */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="relative flex items-center justify-center"
           >
-            {/* Ambient Background Glows */}
             <div className="absolute w-[120%] h-[120%] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="relative z-10 w-80 h-80 md:w-96 md:h-96 lg:w-[600px] lg:h-[600px]">
               <Image
                 src="/amritnew.png"
-                alt="Amrit Sharma — Senior Full Stack Developer"
+                alt="Amrit Sharma, Senior Full Stack Developer"
                 fill
                 priority
                 className="object-contain drop-shadow-[0_20px_50px_rgba(99,102,241,0.3)]"
@@ -191,4 +186,3 @@ export default function Hero() {
     </section>
   );
 }
-
