@@ -104,7 +104,7 @@ export default function Hero() {
               variants={itemVariants}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-black text-white font-[var(--font-poppins)] leading-[0.92] tracking-tighter"
             >
-              Hi, I&apos;m <span className="gradient-text">Amrit</span>
+              Hi, I&apos;m <span className="gradient-text">Amrit Sharma</span>
             </motion.h1>
 
             <motion.p
