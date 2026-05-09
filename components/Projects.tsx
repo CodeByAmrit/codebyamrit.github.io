@@ -41,7 +41,7 @@ const projects = [
       { name: "Node.js", color: "bg-indigo-500/15 text-indigo-300 border-indigo-500/20" },
       { name: "Docker", color: "bg-indigo-500/15 text-indigo-300 border-indigo-500/20" },
     ],
-    liveUrl: "https://cctvcameralive.in",
+    liveUrl: "https://cctvweblink.in",
     githubUrl: "https://github.com/CodeByAmrit/streamVision",
     accentColor: "from-indigo-500/10 to-purple-500/5",
     icon: "https://github.com/CodeByAmrit/StreamVision/blob/master/public/images/favicon.png?raw=true",
