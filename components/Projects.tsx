@@ -122,7 +122,7 @@ function Card({ project }: { project: typeof projects[0] }) {
         <div className="flex items-center gap-3">
           <Magnetic>
             <div className="w-16 h-16 rounded-xl flex items-center justify-center p-2 shadow-xl transition-transform">
-              <Image width={45} height={45} src={project.icon} alt={`${project.title} icon`} className="object-contain logo-glow" />
+              <Image width={45} height={45} src={project.icon} alt={`${project.title} - ${project.subtitle} project by Amrit Sharma`} className="object-contain logo-glow" />
             </div>
           </Magnetic>
           <div>

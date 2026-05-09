@@ -4,9 +4,9 @@ export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Amrit Sharma | Full Stack Developer",
+    name: "Amrit Sharma | Senior Full Stack Developer",
     short_name: "Amrit Sharma",
-    description: "Personal portfolio of Amrit Sharma, a Senior Full Stack Developer.",
+    description: "Personal portfolio of Amrit Sharma, a Senior Full Stack Developer and Software Architect.",
     start_url: "/",
     display: "standalone",
     background_color: "#0a0a0a",

@@ -59,6 +59,14 @@ export default function Footer() {
               Architecting high-performance digital ecosystems with a focus on technical purity and
               visionary engineering.
             </p>
+            <div className="mt-8 grid grid-cols-2 gap-2 text-[10px] font-black uppercase tracking-widest text-gray-500">
+              <span>Next.js 16</span>
+              <span>React 19</span>
+              <span>Software Architect</span>
+              <span>AI Integration</span>
+              <span>Cloud Native</span>
+              <span>TypeScript</span>
+            </div>
             <div className="mt-8 space-y-3 text-sm font-medium text-gray-400">
               <p>Business email: contact@amritsharma.dev</p>
               <p>Response window: usually within 24 hours</p>

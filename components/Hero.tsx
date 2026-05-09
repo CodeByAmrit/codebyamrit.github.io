@@ -104,14 +104,14 @@ export default function Hero() {
               variants={itemVariants}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-black text-white font-[var(--font-poppins)] leading-[0.92] tracking-tighter"
             >
-              Hi, I&apos;m <span className="gradient-text">Amrit Sharma</span>
+              Hi, I&apos;m <span className="gradient-text">Amrit</span>
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
               className="text-lg sm:text-xl md:text-2xl lg:text-[2rem] font-medium text-gray-400 mt-4 font-[var(--font-poppins)]"
             >
-              Full Stack Developer specializing 
+              Senior Full Stack Developer & Software Architect
             </motion.p>
 
             <motion.div
@@ -185,7 +185,7 @@ export default function Hero() {
             <div className="relative z-10 w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[34rem] lg:h-[34rem]">
               <Image
                 src="/amritnew.png"
-                alt="Amrit Sharma, Senior Full Stack Developer"
+                alt="Amrit Sharma - Senior Full Stack Developer and Software Architect in Sonipat, Haryana"
                 fill
                 priority
                 className="object-contain drop-shadow-[0_20px_50px_rgba(99,102,241,0.3)]"

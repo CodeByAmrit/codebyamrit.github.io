@@ -70,13 +70,13 @@ export default function About() {
               The Mind <span className="gradient-text">Behind</span> The Machines
             </h2>
             <p className="text-gray-400 text-lg md:text-xl leading-relaxed mb-6 font-medium">
-              A visionary full-stack architect specializing in the intersection of Artificial
-              Intelligence and modern web infrastructure. I bridge the gap between creative
-              concepts and high-performance engineering.
+              Amrit Sharma is a visionary Senior Full Stack Developer and Software Architect specializing in the intersection of Artificial
+              Intelligence and modern web infrastructure. Based in Sonipat, Haryana, I bridge the gap between creative
+              concepts and high-performance engineering using Next.js 16 and React 19.
             </p>
             <p className="text-gray-500 leading-relaxed max-w-2xl">
-              Currently engineering advanced solutions while mastering AI dynamics. My philosophy
-              is rooted in architectural purity and user-centric innovation.
+              Currently engineering advanced cloud-native solutions while mastering AI dynamics. My philosophy
+              is rooted in architectural purity, user-centric innovation, and scalable digital product engineering.
             </p>
           </Card>
 
