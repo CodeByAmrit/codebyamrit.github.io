@@ -113,6 +113,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    other: {
+      "msvalidate.01": "9EADA3F447F7F384B551318132A22496",
+    },
+  },
 };
 
 const personJsonLd = {
